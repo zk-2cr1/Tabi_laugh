@@ -5,3 +5,31 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Genre.create!(
+    name: "アジア",
+)
+
+Genre.create!(
+    name: "ヨーロッパ",
+)
+
+Genre.create!(
+    name: "北米",
+)
+
+Genre.create!(
+    name: "南米",
+)
+
+Genre.create!(
+    name: "アフリカ",
+)
+
+Genre.create!(
+    name: "オーストラリア",
+)
+
+Genre.create!(
+    name: "南極",
+)
