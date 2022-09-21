@@ -1,2 +1,24 @@
-<h1>Public::Members#edit</h1>
-<p>Find me in app/views/public/members/edit.html.erb</p>
+<div class="container">
+<br>
+   <h4 class="section-ttl font-weight-bold">プロフィール編集</h4>
+</div>
+
+<div class="row justify-content-md-center">
+    <%= form_with model: @member, url: update_information_path, method: :patch, local: true do |f| %>
+
+        <p><%= f.text_field :nick_name, size: 50 %></p>
+
+        <p><%= f.text_area :introduction, size: "50x5" %></p>
+
+    <div class="row justify-content-md-center">
+               <%= f.file_field :profile_image %>
+    </div>
+
+<br>
+    <div class="row justify-content-md-center">
+          <%= f.submit '変更を保存', class: "btn btn-success btn-md" %>
+    </div>
+
+    <% end %>
+</div>
+

@@ -1,2 +1,33 @@
-<h1>Public::Posts#index</h1>
-<p>Find me in app/views/public/posts/index.html.erb</p>
+<div class="container">
+<div class="row justify-content-center">
+     <div class='col-10'>
+<h3 class="section-ttl font-weight-bold">記事一覧</h3>
+
+<!--検索フォーム-->
+<%= form_with url: search_path, method: :get, local: true do |f| %>
+    <%= f.text_field :keyword %>
+    <%= f.select :method , options_for_select({ "完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial" }) %>
+    <%= f.submit '検索'%>
+<% end %>
+
+
+<!--投稿一覧-->
+    <table class = "table">
+           <% @posts.each do |post| %>
+             <tr>
+               <td><%= link_to post_path(post) do %>
+                     <% if post.image.attached? %>
+                     <%= image_tag post.image, size:'80x50' %>
+                     <% else %>
+                     <%= image_tag "no-image.png", size:'80x50' %>
+                     <% end %>
+                   <% end %>
+               </td>
+               <td><%= link_to post.title, post_path(post) %></td>
+               <td><%= post.body %></td>
+              </tr>
+           <% end %>
+    </table>
+  </div>
+    </div>
+    </div>

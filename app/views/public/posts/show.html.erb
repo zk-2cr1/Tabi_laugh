@@ -1,2 +1,41 @@
-<h1>Public::Posts#show</h1>
-<p>Find me in app/views/public/posts/show.html.erb</p>
+<h1>投稿詳細画面</h1>
+
+
+<p><%= @post.title %></p>
+<!--リンク付きハッシュタグ-->
+<p><%= render_with_hashtags(@post.body) %></p>
+
+<% if @post.image.attached? %>
+<td><%= image_tag @post.image, size:'50x50' %></td>
+<% end %>
+<% if @post.member == current_member %>
+   <td><%= link_to 'Edit', edit_post_path(@post) %></td>
+   <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' } %></td>
+ <% end %>
+
+<!--ブックマーク-->
+ <% if @post.favorited?(current_member) %>
+    <!-- 一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
+    <%= link_to post_favorite_path(@post.id), method: :delete do %>
+        <span><i class="fa-solid fa-heart"></i>︎</span>
+    <% end %>
+<% else %>
+    <!-- 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
+    <%= link_to post_favorites_path(@post.id), method: :post do %>
+        <span><i class="fa-regular fa-heart"></i></span>
+    <% end %>
+<% end %>
+
+<h2>コメント</h2>
+<p><%= form_with model:[@post, @comment], method: :post do |f| %></p>
+<p><%= f.text_area :body %></p>
+<p><%= f.hidden_field :post_id, value: @post.id %></p>
+<p><%= f.submit 'コメントする' %></p>
+
+<br>
+<p>コメント一覧</p>
+<% @comments.each do |comment| %>
+ <p><%= comment.body %></p>
+    <%= link_to 'Destroy', comment_path(comment.id), method: :delete %>
+<% end %>
+ <% end %>

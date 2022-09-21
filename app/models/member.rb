@@ -8,13 +8,14 @@ class Member < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  has_one_attached :profile_image
+
 def self.guest
   find_or_create_by!(email: 'guest@guest.com') do |member|
     member.password = SecureRandom.urlsafe_base64
-    member.first_name = 'ゲスト'
-    member.last_name = 'ゲスト'
-    member.nick_name = 'サンプル'
-  end
+    member.name = 'ゲスト'
+    member.nick_name = 'ゲストユーザー'
+    end
 end
 
 end

@@ -1,2 +1,26 @@
-<h1>新規投稿画面</h1>
+<div class="container">
+<br>
+   <h4 class="section-ttl font-weight-bold">記事を書く</h4>
+</div>
 
+
+<div class="row justify-content-md-center">
+  <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
+
+      <p>タイトル</p>
+      <p><%= f.text_field :title, size: 100 %></p>
+
+      <p>内容</p>
+      <p><%= f.text_area :body, size: "100x20" %></p>
+
+    <div class="row justify-content-md-center">
+      <div><%= f.file_field :image %></div>
+    </div>
+
+<br>
+    <div class="row justify-content-md-center">
+      <div><%= f.submit '投稿する', class: "btn btn-success btn-md" %></div>
+    </div>
+
+  <% end %>
+</div>

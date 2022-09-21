@@ -1,2 +1,13 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.bg {
+ background-color: #FAE3BE;
+ min-height: 100vh;
+}
+
+.bg img{
+    width:100%;                              /* 横幅のサイズを指定    */
+    height:50%;                            /* 縦幅のサイズを指定    */
+}
+

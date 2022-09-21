@@ -18,10 +18,15 @@ Rails.application.routes.draw do
       get   'members/unsubscribe'      => 'members#unsubscribe', as: 'unsubscribe'
       patch 'members/withdraw'         => 'members#withdraw',    as: 'withdraw_member'
       patch 'members/information'      => 'members#update',      as: 'update_information'
+      get   '/post/hashtag/:name'      => 'posts#hashtag',       as: 'hashtag'
+      get   '/posts/search'            => 'posts#search',        as: 'search'
 
-      resources :posts
-      resources :comments,  only: [:create, :destroy]
-      resources :favorites, only: [:create, :destroy]
+      resources :posts do
+        resources :favorites, only: [:create, :destroy]
+        resource  :comments,  only: [:create]
+      end
+
+      resources :comments,  only: [:destroy]
       resources :worlds,    only: [:index, :show]
     end
 
@@ -39,6 +44,5 @@ Rails.application.routes.draw do
       resources :comments, only: [:index, :show, :destroy]
       resources :worlds
     end
-
 
  end

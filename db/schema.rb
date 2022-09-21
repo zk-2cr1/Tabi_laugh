@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 2022_09_07_070634) do
     t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["member_id"], name: "index_comments_on_member_id"
+    t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -65,6 +67,8 @@ ActiveRecord::Schema.define(version: 2022_09_07_070634) do
     t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["member_id"], name: "index_favorites_on_member_id"
+    t.index ["post_id"], name: "index_favorites_on_post_id"
   end
 
   create_table "genres", force: :cascade do |t|
@@ -73,15 +77,22 @@ ActiveRecord::Schema.define(version: 2022_09_07_070634) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "hashtags", force: :cascade do |t|
+    t.string "hashname"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashname"], name: "index_hashtags_on_hashname", unique: true
+  end
+
   create_table "members", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "first_name", null: false
-    t.string "last_name", null: false
+    t.string "name", null: false
     t.string "nick_name", null: false
+    t.text "introduction"
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -89,25 +100,19 @@ ActiveRecord::Schema.define(version: 2022_09_07_070634) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
+  create_table "post_hashtag_relations", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "hashtag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashtag_id"], name: "index_post_hashtag_relations_on_hashtag_id"
+    t.index ["post_id"], name: "index_post_hashtag_relations_on_post_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.integer "member_id", null: false
     t.string "title", null: false
     t.text "body", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "tag_maps", force: :cascade do |t|
-    t.integer "post_id", null: false
-    t.integer "tag_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_tag_maps_on_post_id"
-    t.index ["tag_id"], name: "index_tag_maps_on_tag_id"
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -131,8 +136,12 @@ ActiveRecord::Schema.define(version: 2022_09_07_070634) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "tag_maps", "posts"
-  add_foreign_key "tag_maps", "tags"
+  add_foreign_key "comments", "members"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "favorites", "members"
+  add_foreign_key "favorites", "posts"
+  add_foreign_key "post_hashtag_relations", "hashtags"
+  add_foreign_key "post_hashtag_relations", "posts"
   add_foreign_key "world_posts", "posts"
   add_foreign_key "world_posts", "worlds"
 end

@@ -1,2 +1,104 @@
-<h1>Public::Members#show</h1>
-<p>Find me in app/views/public/members/show.html.erb</p>
+ <div class="row justify-content-end">
+    <div class="col-1">
+      <%= link_to new_post_path, class: "text-decoration none color black" do %>
+        <i class="fa-regular fa-square-plus fa-2x"></i>
+      <% end %>
+      </div>
+       </div>
+
+  <div class='row justify-content-start'>
+    <div class='col-md-2 offset-md-1'>
+      <table class='table'>
+        <tr>
+        <% if @member.profile_image.attached? %>
+          <%= image_tag @member.profile_image, class: "rounded-circle", size:'80x80' %>
+        <% else %>
+          <%= image_tag "no-image.png", class: "rounded-circle", size:'80x80' %>
+        <% end %>
+        </tr>
+
+        <tr>
+      	  <th>Name</th>
+      	  <th><%= @member.nick_name %></th>
+        </tr>
+        <tr>
+      	  <th>Introduction</th>
+      	  <th><%= @member.introduction %></th>
+        </tr>
+      </table>
+
+      <div class='row'>
+        <%= link_to edit_information_path,  class: "btn btn-outline-secondary btn-block " do %>
+          <i class="fas fa-user-cog"></i>
+        <% end %>
+      </div>
+    </div>
+
+     <div class='col-md-8 offset-md-1'>
+     <h4 class="section-ttl font-weight-bold">ブックマーク一覧</h4>
+
+      <!--カード表示-->
+      <!--<div class="card-list-containar py-1">-->
+      <% @favorite.each do |favorite| %>
+         <div class="card w-15 shadow-sm", style="width: 18rem;">
+     　　       <%= link_to post_path(favorite.post) do %>
+                  <% if favorite.post.image.attached? %>
+                  <%= image_tag favorite.post.image, class:"card-img-top", size:'200x200' %>
+                  <% else %>
+                  <%= image_tag "no-image.png", class:"card-img-top", size:'100x50' %>
+                  <% end %>
+              <% end %>
+                   <div class="card-body">
+                    <div class="row">
+
+                     <div class="col-2">
+                       <% if favorite.member.profile_image.attached? %>
+                          <%= image_tag favorite.member.profile_image, class: "rounded-circle", size:'30x30' %>
+                       <% else %>
+                         <%= image_tag "no-image.png", class: "rounded-circle", size:'30x30' %>
+                       <% end %>
+                     </div>
+
+
+                      <div class="col-10">
+                        <p class="card-title">
+                          <%= link_to post_path(favorite.post), class:"text-dark" do %>
+                          <strong><i class="far fa-flag"></i><span><%= favorite.post.title %></span></strong>
+                          <% end %>
+                        </p>
+                        <p class="card-text"><%= render_with_hashtags(favorite.post.body) %></p>
+                         <span><i class="fas fa-user"></i> By <%= favorite.post.member.name %> ｜ </span>
+                      </div>
+
+                 　  </div>
+                   </div>
+         </div>
+      <% end %>
+        <%#= paginate  %>
+      <!--</div>-->
+
+
+<br>
+<br>
+
+<div class='row justify-content-start'>
+    <div class='col-md-3'>
+       <h4 class="section-ttl font-weight-bold">投稿一覧</h4>
+          <table class = "table">
+           <% @post.each do |post| %>
+             <tr>
+               <td><%= link_to post_path(post) do %>
+                     <% if post.image.attached? %>
+                     <%= image_tag post.image, size:'80x50' %>
+                     <% else %>
+                     <%= image_tag "no-image.png", size:'80x50' %>
+                     <% end %>
+                   <% end %>
+               </td>
+               <td><%= link_to post.title,  class:"post_#{post.id}" %></td>
+               <td><%= post.body %></td>
+              </tr>
+           <% end %>
+          </table>
+    </div>
+</div>
