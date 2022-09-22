@@ -28,6 +28,8 @@ Rails.application.routes.draw do
 
       resources :comments,  only: [:destroy]
       resources :worlds,    only: [:index, :show]
+      resources :categories,    only: [:index]
+
     end
 
 
@@ -43,6 +45,7 @@ Rails.application.routes.draw do
       resources :members,  only: [:index, :show, :edit, :update]
       resources :comments, only: [:index, :show, :destroy]
       resources :worlds
+      resources :categories, except: [:new, :show]
     end
 
  end

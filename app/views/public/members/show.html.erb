@@ -4,43 +4,55 @@
         <i class="fa-regular fa-square-plus fa-2x"></i>
       <% end %>
       </div>
-       </div>
+ </div>
 
   <div class='row justify-content-start'>
-    <div class='col-md-2 offset-md-1'>
-      <table class='table'>
-        <tr>
+    <div class='col-md-3 offset-sm-1'>
         <% if @member.profile_image.attached? %>
-          <%= image_tag @member.profile_image, class: "rounded-circle", size:'80x80' %>
+          <%= image_tag @member.profile_image, class: "rounded-circle", size:'100x100' %>
         <% else %>
-          <%= image_tag "no-image.png", class: "rounded-circle", size:'80x80' %>
+          <%= image_tag "no-image.png", class: "rounded-circle", size:'100x100' %>
         <% end %>
-        </tr>
 
-        <tr>
-      	  <th>Name</th>
-      	  <th><%= @member.nick_name %></th>
-        </tr>
-        <tr>
-      	  <th>Introduction</th>
-      	  <th><%= @member.introduction %></th>
-        </tr>
-      </table>
-
-      <div class='row'>
-        <%= link_to edit_information_path,  class: "btn btn-outline-secondary btn-block " do %>
+        <div class="row justify-content-end">
+         <%= link_to edit_information_path, class: "btn btn-outline-secondary btn-md" do %>
           <i class="fas fa-user-cog"></i>
         <% end %>
-      </div>
+        </div>
+
+      	  <h5 class="section-ttl font-weight-bold"><%= @member.nick_name %></h5>
+      	  <p><%= @member.introduction %></p>
+
+      <br>
+      <br>
+
+      <h4 class="section-ttl font-weight-bold">投稿一覧</h4>
+          <table class = "table">
+           <% @post.each do |post| %>
+             <tr>
+               <td><%= link_to post_path(post) do %>
+                     <% if post.image.attached? %>
+                     <%= image_tag post.image, size:'80x50' %>
+                     <% else %>
+                     <%= image_tag "no-image.png", size:'80x50' %>
+                     <% end %>
+                   <% end %>
+               </td>
+               <td><%= link_to post.title, post_path(post) %></td>
+               <td><%= post.body %></td>
+              </tr>
+           <% end %>
+          </table>
+
     </div>
 
-     <div class='col-md-8 offset-md-1'>
+     <div class='col-md-6'>
      <h4 class="section-ttl font-weight-bold">ブックマーク一覧</h4>
 
       <!--カード表示-->
-      <!--<div class="card-list-containar py-1">-->
+     <div class="row row-cols-1 row-cols-md-3">
       <% @favorite.each do |favorite| %>
-         <div class="card w-15 shadow-sm", style="width: 18rem;">
+         <div class="card w-15 shadow-sm" >
      　　       <%= link_to post_path(favorite.post) do %>
                   <% if favorite.post.image.attached? %>
                   <%= image_tag favorite.post.image, class:"card-img-top", size:'200x200' %>
@@ -67,7 +79,20 @@
                           <% end %>
                         </p>
                         <p class="card-text"><%= render_with_hashtags(favorite.post.body) %></p>
-                         <span><i class="fas fa-user"></i> By <%= favorite.post.member.name %> ｜ </span>
+                         <span><i class="fas fa-user"></i> By <%= favorite.post.member.nick_name %> ｜
+                          <!--ブックマーク-->
+                             <% if favorite.post.favorited?(current_member) %>
+                                <!-- 一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
+                                <%= link_to post_favorite_path(favorite.post.id, favorite.member.id), method: :delete do %>
+                                    <span><i class="fa-solid fa-heart"></i>︎</span>
+                                <% end %>
+                            <% else %>
+                                <!-- 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
+                                <%= link_to post_favorites_path(favorite.post.id, favorite.member.id), method: :post do %>
+                                    <span><i class="fa-regular fa-heart"></i></span>
+                                <% end %>
+                            <% end %>
+                         </span>
                       </div>
 
                  　  </div>
@@ -75,30 +100,5 @@
          </div>
       <% end %>
         <%#= paginate  %>
-      <!--</div>-->
-
-
-<br>
-<br>
-
-<div class='row justify-content-start'>
-    <div class='col-md-3'>
-       <h4 class="section-ttl font-weight-bold">投稿一覧</h4>
-          <table class = "table">
-           <% @post.each do |post| %>
-             <tr>
-               <td><%= link_to post_path(post) do %>
-                     <% if post.image.attached? %>
-                     <%= image_tag post.image, size:'80x50' %>
-                     <% else %>
-                     <%= image_tag "no-image.png", size:'80x50' %>
-                     <% end %>
-                   <% end %>
-               </td>
-               <td><%= link_to post.title,  class:"post_#{post.id}" %></td>
-               <td><%= post.body %></td>
-              </tr>
-           <% end %>
-          </table>
-    </div>
-</div>
+      </div>
+        </div>

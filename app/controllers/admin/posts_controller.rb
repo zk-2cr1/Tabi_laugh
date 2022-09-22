@@ -1,5 +1,5 @@
 class Admin::PostsController < ApplicationController
-  def idex
+  def index
   end
 
   def show

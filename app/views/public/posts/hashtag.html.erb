@@ -1,12 +1,24 @@
-<h2>ハッシュタグ #<%= @tag.hashname %></h2>
-  <ul>
-    <% @posts.each do |post| %>
-      <li>
-        <%= link_to post_path(post.id) do %>
-          <%= post.title %>
+<div class="container">
+<div class="row justify-content-center">
+     <div class='col-10'>
+<h3 class="section-ttl font-weight-bold">#<%= @tag.hashname %></h3>
+
+    <table class = "table">
+          <% @posts.each do |post| %>
+            <tr>
+               <td><%= link_to post_path(post) do %>
+                     <% if post.image.attached? %>
+                     <%= image_tag post.image, size:'80x50' %>
+                     <% else %>
+                     <%= image_tag "no-image.png", size:'80x50' %>
+                     <% end %>
+                   <% end %>
+               </td>
+               <td><%= link_to post.title, post_path(post) %></td>
+               <td><%= post.body %></td>
+            </tr>
           <% end %>
-          <%#= image_tag post.image.variant(gravity: :center, resize:"100x100^", crop:"100x100+0+0"), if post.image.attached? %>
-          <%= post.body %>
-      </li>
-    <% end %>
-  </ul>
+    </table>
+      </div>
+    </div>
+    </div>

@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   has_many :hashtags, through: :post_hashtag_relations
   has_many :world_posts, dependent: :destroy
   has_many :wolrds, through: :world_posts
+  has_many :categories, dependent: :destroy
 
   has_one_attached :image
 

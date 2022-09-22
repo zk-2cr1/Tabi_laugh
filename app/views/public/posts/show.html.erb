@@ -1,41 +1,54 @@
-<h1>投稿詳細画面</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <h4 class="section-ttl font-weight-bold"><%= @post.title %></h4>
+  </div>
 
+  <div class="row justify-content-center">
+    <!--リンク付きハッシュタグ-->
+    <%= render_with_hashtags(@post.body) %>
+  </div>
 
-<p><%= @post.title %></p>
-<!--リンク付きハッシュタグ-->
-<p><%= render_with_hashtags(@post.body) %></p>
-
-<% if @post.image.attached? %>
-<td><%= image_tag @post.image, size:'50x50' %></td>
-<% end %>
-<% if @post.member == current_member %>
-   <td><%= link_to 'Edit', edit_post_path(@post) %></td>
-   <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' } %></td>
- <% end %>
-
-<!--ブックマーク-->
- <% if @post.favorited?(current_member) %>
-    <!-- 一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
-    <%= link_to post_favorite_path(@post.id), method: :delete do %>
-        <span><i class="fa-solid fa-heart"></i>︎</span>
+  <div class="row justify-content-center">
+    <% if @post.image.attached? %>
+    <td><%= image_tag @post.image, width: '30%', height: '30%' %></td>
     <% end %>
-<% else %>
-    <!-- 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
-    <%= link_to post_favorites_path(@post.id), method: :post do %>
-        <span><i class="fa-regular fa-heart"></i></span>
+  </div>
+
+  <div class="row justify-content-end">
+    <% if @post.member == current_member %>
+       <td><%= link_to 'Edit', edit_post_path(@post), class: "btn btn-success btn-sm" %></td>
+       <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-sm" %></td>
     <% end %>
-<% end %>
 
-<h2>コメント</h2>
-<p><%= form_with model:[@post, @comment], method: :post do |f| %></p>
-<p><%= f.text_area :body %></p>
-<p><%= f.hidden_field :post_id, value: @post.id %></p>
-<p><%= f.submit 'コメントする' %></p>
+    <!--ブックマーク-->
+    <% if @post.favorited?(current_member) %>
+        <!-- 一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
+        <%= link_to post_favorite_path(@post.id), method: :delete do %>
+            <span><i class="fa-solid fa-heart"></i>︎</span>
+        <% end %>
+    <% else %>
+        <!-- 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
+        <%= link_to post_favorites_path(@post.id), method: :post do %>
+            <span><i class="fa-regular fa-heart"></i></span>
+        <% end %>
+    <% end %>
+  </div>
+  
 
-<br>
-<p>コメント一覧</p>
-<% @comments.each do |comment| %>
- <p><%= comment.body %></p>
-    <%= link_to 'Destroy', comment_path(comment.id), method: :delete %>
-<% end %>
- <% end %>
+  <div class="row justify-content-center">
+    <h6 class="font-weight-bold">コメント</h6>
+    <p><%= form_with model:[@post, @comment], method: :post do |f| %></p>
+    <p><%= f.text_area :body %></p>
+    <p><%= f.hidden_field :post_id, value: @post.id %></p>
+    <p><%= f.submit 'コメントする' %></p>
+
+    <br>
+    <p>コメント一覧</p>
+    <% @comments.each do |comment| %>
+     <p><%= comment.body %></p>
+        <%= link_to 'Destroy', comment_path(comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-sm" %>
+    <% end %>
+     <% end %>
+  </div>
+
+</div>
