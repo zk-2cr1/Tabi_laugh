@@ -4,13 +4,22 @@ class Public::PostsController < ApplicationController
 
     def new
       @post = Post.new
+      @category = Category.all
     end
 
 
     def index
       @posts = Post.all
       @post = Post.new
-
+      # @categories = Category.where(category_id: category.id)
+      # if params[:category_id]
+      #     @category = @categories.find(params[:category_id])
+      #     all_posts = @category.posts
+      # else
+      #     all_posts = Item.where_genre_active.includes(:genre)
+      # end
+      # @posts = all_items.page(params[:page]).per(12)
+      # @all_items_count = all_items.count
     end
 
 
@@ -34,6 +43,7 @@ class Public::PostsController < ApplicationController
           redirect_to posts_path(@post)
        else
           @posts = Post.all
+          @category = Category.all
           render 'index'
        end
     end

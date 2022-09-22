@@ -102,3 +102,8 @@
         <%#= paginate  %>
       </div>
         </div>
+
+  <div class="sidebar">
+		<h4>カテゴリー一覧</h4>
+		<%#= link_to @categories.name, posts_path(category_id: category.id) %>
+	</div>
