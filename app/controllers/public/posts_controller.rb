@@ -69,7 +69,7 @@ class Public::PostsController < ApplicationController
     def hashtag
       @member = current_member
       @tag = Hashtag.find_by(hashname: params[:name])
-      @posts = @tag.posts
+      @posts = @tag.posts.page(params[:page]).per(10)
       # @post  = @tag.posts.page(params[:page])
       # @comment    = Comment.new
       # @comments   = @posts.comments

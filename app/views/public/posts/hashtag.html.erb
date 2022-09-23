@@ -4,6 +4,13 @@
 <h3 class="section-ttl font-weight-bold">#<%= @tag.hashname %></h3>
 
     <table class = "table">
+      <table class = "table">
+       <tr>
+          <th></th>
+          <th>タイトル</th>
+          <th>内容</th>
+          <th>カテゴリー</th>
+       </tr>
           <% @posts.each do |post| %>
             <tr>
                <td><%= link_to post_path(post) do %>
@@ -16,8 +23,10 @@
                </td>
                <td><%= link_to post.title, post_path(post) %></td>
                <td><%= post.body %></td>
+               <td><%= link_to post.category.name %></td>
             </tr>
           <% end %>
+          <%= paginate @posts %>
     </table>
       </div>
     </div>

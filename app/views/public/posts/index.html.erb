@@ -11,6 +11,13 @@
 
 <!--投稿一覧-->
     <table class = "table">
+       <tr>
+          <th></th>
+          <th>タイトル</th>
+          <th>内容</th>
+          <th>カテゴリー</th>
+       </tr>
+
         <% if @posts.first %>
            <% @posts.each do |post| %>
              <tr>

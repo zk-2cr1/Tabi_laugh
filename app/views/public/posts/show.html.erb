@@ -33,22 +33,29 @@
         <% end %>
     <% end %>
   </div>
-  
+
 
   <div class="row justify-content-center">
     <h6 class="font-weight-bold">コメント</h6>
     <p><%= form_with model:[@post, @comment], method: :post do |f| %></p>
-    <p><%= f.text_area :body %></p>
+    <p><%= f.text_area :body, size: "30x5" %></p>
     <p><%= f.hidden_field :post_id, value: @post.id %></p>
     <p><%= f.submit 'コメントする' %></p>
 
     <br>
-    <p>コメント一覧</p>
-    <% @comments.each do |comment| %>
-     <p><%= comment.body %></p>
-        <%= link_to 'Destroy', comment_path(comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-sm" %>
-    <% end %>
+    <table class = "table">
+    <tr>
+       <h6 class="font-weight-bold">コメント一覧</h6>
+      <% @comments.each do |comment| %>
+       <td>
+       <%= comment.body %>
+       <%= link_to 'Destroy', comment_path(comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-sm" %>
+       </td>
+       </tr>
+      <% end %>
      <% end %>
+    </table>
   </div>
+
 
 </div>

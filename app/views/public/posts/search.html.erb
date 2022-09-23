@@ -3,6 +3,13 @@
       <div class='col-10'>
           	<h3 class="section-ttl font-weight-bold">検索結果</h3>
           <table class = "table">
+              <tr>
+                <th></th>
+                <th>タイトル</th>
+                <th>内容</th>
+                <th>カテゴリー</th>
+              </tr>
+
                 <% if @posts.first %>
                    <% @posts.each do |post| %>
                      <tr>
