@@ -1,6 +1,30 @@
- <div class="post-list">
-  <% @posts.each do |post| %>
-    <p><%= post.title %></p>
-    <p><%= post.body %></p>
-  <% end %>
+<div class="container">
+   <div class="row justify-content-center">
+      <div class='col-10'>
+          	<h3 class="section-ttl font-weight-bold">検索結果</h3>
+          <table class = "table">
+                <% if @posts.first %>
+                   <% @posts.each do |post| %>
+                     <tr>
+                       <td><%= link_to post_path(post) do %>
+                             <% if post.image.attached? %>
+                             <%= image_tag post.image, size:'80x50' %>
+                             <% else %>
+                             <%= image_tag "no-image.png", size:'80x50' %>
+                             <% end %>
+                       </td>
+                       <td><%= link_to post.title, post_path(post) %></td>
+                           <% end %>
+
+                       <td><%= post.body %></td>
+                       <td><%= link_to post.category.name %></td>
+                      </tr>
+                   <% end %>
+                   	<%= paginate @posts %>
+                <% else %>
+        			<h4>対応する投稿はありませんでした。</h4>
+        		<% end %>
+            </table>
+     </div>
+   </div>
 </div>

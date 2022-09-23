@@ -5,16 +5,16 @@
         <%= link_to "旅ラフ", root_path, class: "btn btn-outline-dark btn-lg text-left px-5" %>
       </div>
 
+        <%= render 'public/posts/search_form' %>
+        <%#= render 'public/posts/category', categories: @categories %>
+
       <div class="row justify-content-end">
         <% if admin_signed_in? %>
-            <%= link_to "エリア一覧", admin_categories_path, class: "btn btn-outline-dark mx-1" %>
-            <%= link_to "国一覧", admin_worlds_path, class: "btn btn-outline-dark mx-1" %>
             <%= link_to "ユーザー一覧", admin_members_path, class: "btn btn-outline-dark mx-1" %>
             <%= link_to "投稿一覧", admin_posts_path, class: "btn btn-outline-dark mx-1" %>
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-dark mx-1" %>
         <% elsif member_signed_in? %>
-            <%= link_to "エリア一覧", categories_path, class: "btn btn-outline-dark mx-2" %>
-            <%= link_to "投稿一覧", posts_path, class: "btn btn-outline-dark mx-1" %>
+            <%= link_to "投稿一覧", posts_path, class: "btn btn-outline-dark" %>
             <div class="dropdown">
                  <!--切替ボタンの設定 -->
                 <div class="nav-link" id="dropdownMenuButton button_group" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -27,7 +27,7 @@
                 </div>
             </div>
         <% else %>
-            <%= link_to "エリア一覧", categories_path, class: "btn btn-outline-dark mx-2" %>
+            <%#= link_to "エリア一覧", categories_path, class: "btn btn-outline-dark mx-2" %>
             <%= link_to "投稿一覧", posts_path, class: "btn btn-outline-dark mx-1" %>
             <div class="dropdown">
                 <!-- 切替ボタンの設定 -->

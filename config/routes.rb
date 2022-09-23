@@ -45,7 +45,7 @@ Rails.application.routes.draw do
       resources :members,  only: [:index, :show, :edit, :update]
       resources :comments, only: [:index, :show, :destroy]
       resources :worlds
-      resources :categories, except: [:new, :show]
+      resources :categories, only: [:index, :create, :edit, :update]
     end
 
  end

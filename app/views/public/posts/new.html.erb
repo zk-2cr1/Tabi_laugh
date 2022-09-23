@@ -19,6 +19,12 @@
 
 <br>
     <div class="row justify-content-md-center">
+      <div>カテゴリー</div>
+      <div><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください" %></div>
+    </div>
+
+<br>
+    <div class="row justify-content-md-center">
       <div><%= f.submit '投稿する', class: "btn btn-success btn-md" %></div>
     </div>
 
