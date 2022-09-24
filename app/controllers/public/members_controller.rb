@@ -2,7 +2,6 @@ class Public::MembersController < ApplicationController
    before_action :authenticate_member!
    before_action :set_current_member
 
-
   def show
       @favorite = Favorite.where(member_id: current_member.id).page(params[:page]).per(9)
       @post = Post.where(member_id: current_member.id).includes(:member).order("created_at DESC").page(params[:page]).per(10)
@@ -24,6 +23,9 @@ class Public::MembersController < ApplicationController
   end
 
   def withdraw
+     @member.update(is_deleted: true)
+     reset_session
+     redirect_to root_path
   end
 
 
@@ -36,6 +38,5 @@ class Public::MembersController < ApplicationController
   def set_current_member
       @member = current_member
   end
-
 
 end

@@ -1,2 +1,67 @@
-<h1>Admin::Members#show</h1>
-<p>Find me in app/views/admin/members/show.html.erb</p>
+<div class="container col-lg-9">
+  <h3><div class="d-inline mt-5 px-3 bg-light text-dark">
+    <%= @member.nick_name %>
+    さんの詳細</div></h3>
+</div>
+<br>
+<div class="container col-lg-9 mb-5">
+  <table class="table table-borderless">
+    <thead>
+      <th style="width: 20%"></th>
+      <th style="width: 25%"></th>
+      <th></th>
+    </thead>
+    <tbody>
+    <tr>
+      <td>
+        <h6>ユーザーID</h6>
+      </td>
+      <td>
+        <%= @member.id %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h6>名前</h6>
+      </td>
+      <td>
+        <%= @member.name %>
+      </td>
+    </tr>
+     <tr>
+      <td>
+        <h6>表示名</h6>
+      </td>
+      <td>
+        <%= @member.nick_name %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h6>メールアドレス</h6>
+      </td>
+      <td>
+        <%= @member.email %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h6>ユーザーステータス</h6>
+      </td>
+      <td>
+        <% if @member.is_deleted == false %>
+          <div class="text-success font-weight-bold">有効</div>
+        <% else %>
+          <div class="text-danger font-weight-bold">退会</div>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <%= link_to "編集する",edit_admin_member_path,class: "btn btn-success btn-lg" %>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

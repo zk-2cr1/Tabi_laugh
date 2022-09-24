@@ -6,6 +6,7 @@
 
 <div class = "container col-lg-3">
    <h3 class="section-ttl font-weight-bold">会員ログイン</h3>
+   <%= flash[:error] %>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
          <table class="customer_info customer_form">

@@ -1,9 +1,9 @@
 <div class = "container col-lg-10">
-  <h3><div class="d-inline mt-5 px-3 bg-light text-dark">管理者ログイン</div></h3>
+  <h3><div class="d-inline mt-5 px-3">管理者ログイン</div></h3>
 </div>
 <br>
 <div class='container col-lg-7'>
-  <%= form_with model: @admin, url: admin_session_path(resource_name), local: true do |f| %>
+  <%= form_with model: @admin, url: session_path(resource_name), local: true do |f| %>
     <table class="table table-borderless">
       <tr>
         <div class="field">

@@ -1,2 +1,31 @@
-<h1>Admin::Posts#idex</h1>
-<p>Find me in app/views/admin/posts/idex.html.erb</p>
+<div class="container">
+   <div class='row justify-content-start'>
+       <h4 class="section-ttl font-weight-bold">投稿一覧</h4>
+         <table class = "table">
+          <tr>
+              <th></th>
+              <th>タイトル</th>
+              <th>内容</th>
+              <th>カテゴリー</th>
+          </tr>
+
+  	      <% @posts.each do |post| %>
+          <tr>
+               <td><%= link_to admin_post_path(post) do %>
+                     <% if post.image.attached? %>
+                     <%= image_tag post.image, size:'80x50' %>
+                     <% else %>
+                     <%= image_tag "no-image.png", size:'80x50' %>
+                     <% end %>
+               </td>
+               <td><%= link_to post.title, admin_post_path(post) %></td>
+                   <% end %>
+
+               <td><%= post.body %></td>
+               <td><%= link_to post.category.name %></td>
+              </tr>
+           <% end %>
+           	<%= paginate @posts %>
+           	</table>
+    </div>
+</div>

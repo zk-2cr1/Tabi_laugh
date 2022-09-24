@@ -1,2 +1,45 @@
-<h1>Admin::Members#edit</h1>
-<p>Find me in app/views/admin/members/edit.html.erb</p>
+<div class='container'>
+  <div class'row'>
+    <h3><div class="d-inline p-3 mb-2 bg-light text-dark font-weight-bold">
+      <%= @member.nick_name %>さんのユーザー情報編集
+    </div></h3>
+
+    <%= form_with model: @member,url: admin_member_path, method: "patch" do |f| %>
+    <div class='col-md-9 mx-auto'>
+      <table class='table table-borderless'>
+        <tbody>
+
+          <tr>
+            <td>ユーザーID</td>
+            <td><%= @member.id %></td>
+          </tr>
+          <tr>
+            <td>名前</td>
+            <td><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+            <td>表示名</td>
+            <td><%= f.text_field :nick_name %></td>
+          </tr>
+    　　　　　<tr>
+            <td>メールアドレス</td>
+            <td><%= f.email_field :email %></td>
+          </tr>
+          <tr>
+            <td>会員ステータス</td>
+            <td>
+              <%= f.radio_button :is_deleted, false %>有効
+              <%= f.radio_button :is_deleted, true %>退会
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+        <div class="form-group d-grid gap-1 col-5 mx-auto">
+          <%= f.submit '保存を変更', class: 'btn btn-success btn-md' %>
+        </div>
+     <% end %>
+    </div>
+  </div>
+</div>

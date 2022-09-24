@@ -49,12 +49,15 @@
       <% @comments.each do |comment| %>
        <td>
        <%= comment.body %>
+        <% if comment.post.member == current_member %>
        <%= link_to 'Destroy', comment_path(comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-sm" %>
+       <% end %>
        </td>
        </tr>
       <% end %>
+      </table>
      <% end %>
-    </table>
+
   </div>
 
 

@@ -1,19 +1,23 @@
 <header class="bg-warning mb-3">
   <nav class="navbar">
     <div class="container-fluid">
-      <div class="col-8">
+      <div class="col-lg-4">
         <%= link_to "旅ラフ", root_path, class: "btn btn-outline-dark btn-lg text-left px-5" %>
       </div>
 
-        <%= render 'public/posts/search_form' %>
+     <div class="col-lg-6 text-right">
+        <%#= render 'public/posts/search_form' %>
         <%#= render 'public/posts/category', categories: @categories %>
 
-      <div class="row justify-content-end">
+
         <% if admin_signed_in? %>
+            <%= link_to "管理者トップ", admin_top_path, class: "btn btn-outline-dark mx-1" %>
             <%= link_to "ユーザー一覧", admin_members_path, class: "btn btn-outline-dark mx-1" %>
             <%= link_to "投稿一覧", admin_posts_path, class: "btn btn-outline-dark mx-1" %>
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-dark mx-1" %>
+
         <% elsif member_signed_in? %>
+         　　<%= render 'public/posts/search_form' %>
             <%= link_to "投稿一覧", posts_path, class: "btn btn-outline-dark" %>
             <div class="dropdown">
                  <!--切替ボタンの設定 -->
@@ -27,6 +31,7 @@
                 </div>
             </div>
         <% else %>
+         <%= render 'public/posts/search_form' %>
             <%#= link_to "エリア一覧", categories_path, class: "btn btn-outline-dark mx-2" %>
             <%= link_to "投稿一覧", posts_path, class: "btn btn-outline-dark mx-1" %>
             <div class="dropdown">
