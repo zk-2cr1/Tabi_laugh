@@ -11,7 +11,7 @@
         <% if @member.profile_image.attached? %>
           <%= image_tag @member.profile_image, class: "rounded-circle", size:'100x100' %>
         <% else %>
-          <%= image_tag "no-image.png", class: "rounded-circle", size:'100x100' %>
+          <%= image_tag "/no-image.png", class: "rounded-circle", size:'100x100' %>
         <% end %>
 
         <div class="row justify-content-end">
@@ -63,7 +63,7 @@
                   <% if favorite.post.image.attached? %>
                   <%= image_tag favorite.post.image, class:"card-img-top", size:'200x200' %>
                   <% else %>
-                  <%= image_tag "no-image.png", class:"card-img-top", size:'100x50' %>
+                  <%= image_tag "/no-image.png", class:"card-img-top", size:'100x50' %>
                   <% end %>
               <% end %>
                    <div class="card-body">
@@ -73,7 +73,7 @@
                        <% if favorite.member.profile_image.attached? %>
                           <%= image_tag favorite.member.profile_image, class: "rounded-circle", size:'30x30' %>
                        <% else %>
-                         <%= image_tag "no-image.png", class: "rounded-circle", size:'30x30' %>
+                         <%= image_tag "/no-image.png", class: "rounded-circle", size:'30x30' %>
                        <% end %>
                      </div>
 

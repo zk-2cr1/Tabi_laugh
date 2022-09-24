@@ -1,6 +1,6 @@
 class Public::HomesController < ApplicationController
   def top
-     @posts = Post.all
+    @posts = Post.all
       @post = Post.new
       @categories = Category.all
       if params[:category_id]

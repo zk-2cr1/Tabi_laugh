@@ -18,8 +18,8 @@ def self.guest
     end
 end
 
-def active_for_authentication?
-    super && (self.is_deleted == true)
-end
+# def active_for_authentication?
+#     super && (self.is_deleted == true)
+# end
 
 end

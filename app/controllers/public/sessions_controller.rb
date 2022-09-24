@@ -1,5 +1,6 @@
 class Public::SessionsController < Devise::SessionsController
     before_action :reject_member, only: [:create]
+    before_action :new_guest, only: [:create]
 
   def new_guest
     member = Member.guest

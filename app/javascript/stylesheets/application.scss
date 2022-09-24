@@ -1,16 +1,44 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+@charset 'UTF-8';
+
+body {
+  background-image: url("../images/BG.jpg");
+}
+
+
 .bg {
- background-color: #FAE3BE;
- min-height: 100vh;
+  text-align : center
 }
 
 .bg img{
-width:100%;
-height:50%;
+  text-align: center;
+  width:50%;
+  height:auto
 }
 
 .card-text{
 font-size: 10%;
 }
+
+.header-dropdown{
+  font-size: 150%;
+}
+
+// .navbar{
+//   // background-color: #yellow;
+
+
+//   .logo{
+//     font-family: "游ゴシック体";
+//       font-size: 150%;
+
+//   }
+//     ul {
+//       justify-content: flex-end;
+
+
+// }
+
+// }
