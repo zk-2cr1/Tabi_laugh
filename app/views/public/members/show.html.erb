@@ -7,7 +7,7 @@
  </div>
 
   <div class='row justify-content-start'>
-    <div class='col-md-3 offset-sm-1'>
+    <div class='col-md-4 offset-sm-1'>
         <% if @member.profile_image.attached? %>
           <%= image_tag @member.profile_image, class: "rounded-circle", size:'100x100' %>
         <% else %>
@@ -27,26 +27,27 @@
       <br>
 
       <h4 class="section-ttl font-weight-bold">投稿一覧</h4>
-          <table class = "table">
+           <table class = "table">
                <tr>
                   <th></th>
                   <th>タイトル</th>
                   <th>内容</th>
                </tr>
-           <% @post.each do |post| %>
 
+           <% @post.each do |post| %>
+           <tr>
                <td><%= link_to post_path(post) do %>
                      <% if post.image.attached? %>
                      <%= image_tag post.image, size:'80x50' %>
                      <% else %>
-                     <%= image_tag "no-image.png", size:'80x50' %>
+                     <%= image_tag "/no-image.png", size:'80x50' %>
                      <% end %>
                    <% end %>
                </td>
                <td><%= link_to post.title, post_path(post) %></td>
                <td><%= post.body %></td>
-
            <% end %>
+      </tr>
            <%= paginate @post %>
           </table>
 

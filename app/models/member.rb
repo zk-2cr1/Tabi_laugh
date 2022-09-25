@@ -4,6 +4,8 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :introduction, length: { maximum: 200 }
+
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -17,6 +19,7 @@ def self.guest
     member.nick_name = 'ゲストユーザー'
     end
 end
+
 
 # def active_for_authentication?
 #     super && (self.is_deleted == true)

@@ -26,7 +26,7 @@ class Public::PostsController < ApplicationController
     def show
       @post = Post.find(params[:id])
       @comments = @post.comments                  #投稿詳細に関連付けてあるコメントを全取得
-      @comment = current_member.comments.new      #投稿詳細画面でコメントの投稿を行うので、formのパラメータ用にCommentオブジェクトを取得
+      @comment = Comment.new
     end
 
 
@@ -40,7 +40,7 @@ class Public::PostsController < ApplicationController
       @post.member_id = current_member.id
 
        if @post.save
-          redirect_to posts_path(@post)
+          redirect_to mypage_path
        else
           @posts = Post.all
           @category = Category.all
@@ -70,9 +70,6 @@ class Public::PostsController < ApplicationController
       @member = current_member
       @tag = Hashtag.find_by(hashname: params[:name])
       @posts = @tag.posts.page(params[:page]).per(10)
-      # @post  = @tag.posts.page(params[:page])
-      # @comment    = Comment.new
-      # @comments   = @posts.comments
     end
 
 

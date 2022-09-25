@@ -20,6 +20,8 @@
        <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-sm" %></td>
     <% end %>
 
+
+   <% if member_signed_in? %>
     <!--ブックマーク-->
     <% if @post.favorited?(current_member) %>
         <!-- 一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
@@ -32,20 +34,26 @@
             <span><i class="fa-regular fa-heart"></i></span>
         <% end %>
     <% end %>
+   <% end %>
   </div>
 
 
   <div class="row justify-content-center">
+    <% if member_signed_in? %>
     <h6 class="font-weight-bold">コメント</h6>
     <p><%= form_with model:[@post, @comment], method: :post do |f| %></p>
     <p><%= f.text_area :body, size: "30x5" %></p>
     <p><%= f.hidden_field :post_id, value: @post.id %></p>
     <p><%= f.submit 'コメントする' %></p>
+       <% end %>
+    <% end %>
 
     <br>
-    <table class = "table">
-    <tr>
+    
+
        <h6 class="font-weight-bold">コメント一覧</h6>
+        <table class = "table text-center">
+        <tr>
       <% @comments.each do |comment| %>
        <td>
        <%= comment.body %>
@@ -56,9 +64,10 @@
        </tr>
       <% end %>
       </table>
-     <% end %>
 
-  </div>
+
+   </div>
+
 
 
 </div>

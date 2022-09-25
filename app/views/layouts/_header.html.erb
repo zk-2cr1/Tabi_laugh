@@ -3,6 +3,12 @@
     <div class="container-fluid">
         <%= link_to "旅ラフ", root_path, class: "btn btn-outline-dark mx-2" %>
 
+        <% if member_signed_in? %>
+        <div class="text-center">
+          <%= "ようこそ、"+current_member.nick_name+"さん！" %>
+        </div>
+        <% end %>
+
          <div class="d-flex justify-content-end">
             <% if admin_signed_in? %>
                 <%= render 'public/posts/category', categories: @categories %>
@@ -13,9 +19,7 @@
 
             <% elsif member_signed_in? %>
                 <%= render 'public/posts/search_form' %>
-
-                <%#= render 'public/posts/category', categories: @categories %>
-
+                <%= render 'public/posts/category', categories: @categories %>
                 <%= link_to '投稿一覧', posts_path, class: "btn btn-outline-dark mx-2" %>
 
                 <div class="header-dropdown">
@@ -27,6 +31,7 @@
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                       <%= link_to 'マイページ', mypage_path, class: 'nav-link dropdown-item' %>
                       <%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: 'nav-link dropdown-item' %>
+                      <%= link_to 'アカウント編集', edit_member_registration_path, class: 'nav-link dropdown-item' %>
                     </div>
                 </div>
 

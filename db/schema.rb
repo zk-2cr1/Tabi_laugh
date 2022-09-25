@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2022_09_22_050857) do
     t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index "\"member_id\", \"item_id\"", name: "index_favorites_on_member_id_and_item_id", unique: true
     t.index ["member_id"], name: "index_favorites_on_member_id"
     t.index ["post_id"], name: "index_favorites_on_post_id"
   end
@@ -100,6 +101,7 @@ ActiveRecord::Schema.define(version: 2022_09_22_050857) do
     t.string "nick_name", null: false
     t.text "introduction"
     t.boolean "is_deleted", default: false, null: false
+    t.datetime "deleted_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_members_on_email", unique: true

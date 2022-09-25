@@ -19,10 +19,5 @@ Category.create([
 
 Admin.create!(
    email: 'admin@test.com',
-   password: '000000'
-)
-
-Admin.create!(
-   email: 'admin@test',
    password: '111111'
 )

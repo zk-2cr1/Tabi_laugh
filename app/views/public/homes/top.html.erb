@@ -1,8 +1,28 @@
 <div class="row justify-content-end">
 
-<%#= render 'public/posts/category', categories: @categories %>
+<!--<div class="bg">-->
+<!--          <%#= image_tag '/map.jpg', usemap: "#image-map" %>-->
+<!--          <map name="ImageMap">-->
+<!--  <area shape="poly" coords="561,842,444,818,352,771,194,791,101,881,91,1086,175,1191,284,1143,358,1285,346,1392,421,1607,432,1622,490,1610,578,1494,663,1503,689,1495,710,1389,701,1349,621,1328,609,1262,695,1162,718,1072,654,1093,570,905,559,841,574,949", href= "<%= posts_url(category_id: 5) %>" >-->
+<!--</map>-->
 
+<!--</div>-->
 
 <div class="bg">
-          <%= image_tag '/map.jpg' %>
+     <%= image_tag '/map.jpg', usemap: "#image-map" %>
+    <map name="ImageMap">
+       <%= link_to posts_path(category_id: 5) do %>
+       <area shape="circle", coords="854,551,49">
+       <% end %>
+    </map>
+</div>
+
+
+<!--<div class="bg">-->
+<!--     <%#= image_tag '/test.jpg', usemap: "#image-map" %>-->
+<!--    <map name="ImageMap">-->
+<!--       <area shape="circle", coords="854,551,49", href="<%#=  posts_path(category_id: 5) %>">-->
+<!--    </map>-->
+<!--</div>-->
+
 </div>
