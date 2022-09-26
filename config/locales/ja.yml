@@ -1,7 +1,10 @@
 ja:
   activerecord:
-    models:
-      member:           #model名
     attributes:
-      member:           #model名
-        introduction: '紹介' #カラム名
+      member:                 #model名
+        introduction: '紹介'  #カラム名
+      post:
+        title: 'タイトル'
+        body:  '本文'
+      category:
+        Category:  'カテゴリー'

@@ -18,7 +18,7 @@ class Public::PostsController < ApplicationController
       else
           all_posts = Post.includes(:category)
       end
-      @posts = all_posts.page(params[:page]).per(12)
+      @posts = all_posts.page(params[:page]).per(10)
       @all_posts_count = all_posts.count
     end
 
@@ -44,7 +44,7 @@ class Public::PostsController < ApplicationController
        else
           @posts = Post.all
           @category = Category.all
-          render 'index'
+          render 'new'
        end
     end
 

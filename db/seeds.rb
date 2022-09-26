@@ -21,3 +21,50 @@ Admin.create!(
    email: 'admin@test.com',
    password: '111111'
 )
+
+
+# Member.create!(
+#   name: 'ユーザー',
+#   nick_name: 'ユーザー',
+#   introduction: 'こんにちは！',
+#   email: 'member@test.com',
+#   password: '111111'
+# )
+
+# Post.create!([
+#   { title: "日本",
+#     body: '日本旅行。#楽しかった',
+#     category_id: 1,
+#     member_id: 1,
+#   },
+#   { title: "アメリカ",
+#     body: 'アメリカ旅行。#楽しかった #賑やか',
+#     category_id: 3,
+#     member_id: 1,
+#   },
+#   { title: "ブラジル",
+#     body: 'ブラジル旅行。#楽しかった #カーニバル',
+#     category_id: 4,
+#     member_id: 1,
+#   },
+#   { title: "アフリカ",
+#     body: 'アフリカ旅行。#楽しかった #自然',
+#     category_id: 5,
+#     member_id: 1,
+#   },
+#   { title: "イギリス",
+#     body: 'イギリス旅行。#楽しかった #豪華',
+#     category_id: 2,
+#     member_id: 1,
+#   },
+#   { title: "オーストラリア",
+#     body: 'オーストラリア旅行。#楽しかった #海！',
+#     category_id: 6,
+#     member_id: 1,
+#   },
+#   { title: "南極",
+#     body: '南極旅行。#楽しかった #寒かった',
+#     category_id: 7,
+#     member_id: 1,
+#   }
+# ])

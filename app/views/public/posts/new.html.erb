@@ -1,8 +1,15 @@
 <div class="container">
 <br>
    <h4 class="section-ttl font-weight-bold">記事を書く</h4>
-</div>
 
+<% if @post.errors.any? %>
+    <ul style="color: red ">
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+<% end %>
+</div>
 
 <div class="row justify-content-md-center">
   <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>

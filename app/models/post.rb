@@ -5,11 +5,11 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :post_hashtag_relations, dependent: :destroy
   has_many :hashtags, through: :post_hashtag_relations
-  has_many :world_posts, dependent: :destroy
-  has_many :wolrds, through: :world_posts
-
 
   has_one_attached :image
+
+  validates :title, presence: true
+  validates :body, presence: true
 
   def favorited?(member)
       favorites.where(member_id: member.id).exists?

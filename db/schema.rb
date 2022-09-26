@@ -78,12 +78,6 @@ ActiveRecord::Schema.define(version: 2022_09_22_050857) do
     t.index ["post_id"], name: "index_favorites_on_post_id"
   end
 
-  create_table "genres", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "hashtags", force: :cascade do |t|
     t.string "hashname"
     t.datetime "created_at", precision: 6, null: false
@@ -126,23 +120,6 @@ ActiveRecord::Schema.define(version: 2022_09_22_050857) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "world_posts", force: :cascade do |t|
-    t.integer "world_id", null: false
-    t.integer "post_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_world_posts_on_post_id"
-    t.index ["world_id"], name: "index_world_posts_on_world_id"
-  end
-
-  create_table "worlds", force: :cascade do |t|
-    t.integer "genre_id", null: false
-    t.string "name", null: false
-    t.text "body", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "members"
@@ -151,6 +128,4 @@ ActiveRecord::Schema.define(version: 2022_09_22_050857) do
   add_foreign_key "favorites", "posts"
   add_foreign_key "post_hashtag_relations", "hashtags"
   add_foreign_key "post_hashtag_relations", "posts"
-  add_foreign_key "world_posts", "posts"
-  add_foreign_key "world_posts", "worlds"
 end

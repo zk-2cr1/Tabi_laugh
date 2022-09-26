@@ -47,12 +47,12 @@
     <p><%= f.submit 'コメントする' %></p>
        <% end %>
     <% end %>
+  </div>
 
     <br>
-    
 
-       <h6 class="font-weight-bold">コメント一覧</h6>
-        <table class = "table text-center">
+    <h6 class="font-weight-bold text-center">コメント一覧</h6>
+    <table class = "table text-center">
         <tr>
       <% @comments.each do |comment| %>
        <td>
@@ -63,11 +63,7 @@
        </td>
        </tr>
       <% end %>
-      </table>
-
-
-   </div>
-
+    </table>
 
 
 </div>
