@@ -11,10 +11,17 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
+import "./jquery.rwdImageMaps.js"
+import "./jquery.rwdImageMaps.min.js"
 
 const images = require.context('../images', true)
 const imagePath = (name) => images(name, true)
 
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+$(function() {
+    // $('img[usemap]').rwdImageMaps();
+});

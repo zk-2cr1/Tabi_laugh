@@ -9,36 +9,25 @@ body {
 
 
 .bg {
-  text-align : center
+  margin : 0 auto;
 }
 
-.bg img{
-  text-align: center;
-  width:50%;
-  height:auto
-}
 
 .card-text{
 font-size: 10%;
 }
 
+header{
+  a{
+    color: black;
+    font-weight: normal;
+  }
+  p {
+        padding: 10px;
+        text-align: center;
+      }
+
 .header-dropdown{
   font-size: 150%;
+ }
 }
-
-// .navbar{
-//   // background-color: #yellow;
-
-
-//   .logo{
-//     font-family: "游ゴシック体";
-//       font-size: 150%;
-
-//   }
-//     ul {
-//       justify-content: flex-end;
-
-
-// }
-
-// }
