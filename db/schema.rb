@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 2022_09_22_050857) do
     t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index "\"member_id\", \"item_id\"", name: "index_favorites_on_member_id_and_item_id", unique: true
+    t.index ["member_id", "post_id"], name: "index_favorites_on_member_id_and_post_id", unique: true
     t.index ["member_id"], name: "index_favorites_on_member_id"
     t.index ["post_id"], name: "index_favorites_on_post_id"
   end
