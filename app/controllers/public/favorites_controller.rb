@@ -6,7 +6,6 @@ class Public::FavoritesController < ApplicationController
     @favorite = Favorite.new(member_id: current_member.id, post_id: params[:post_id])
     @favorite.save
     redirect_to request.referer
-
   end
 
   def destroy
