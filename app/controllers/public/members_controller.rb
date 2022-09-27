@@ -5,7 +5,6 @@ class Public::MembersController < ApplicationController
   def show
       @favorite = Favorite.where(member_id: current_member.id).page(params[:page]).per(9)
       @post = Post.where(member_id: current_member.id).includes(:member).order("created_at DESC").page(params[:page]).per(5)
-      # @categories = Category.where(category_id: category.id)
   end
 
   def edit

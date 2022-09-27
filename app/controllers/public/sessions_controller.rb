@@ -1,5 +1,5 @@
 class Public::SessionsController < Devise::SessionsController
-    # before_action :reject_member, only: [:create]
+    before_action :reject_member, only: [:create]
 
 
   def new_guest
@@ -19,18 +19,18 @@ class Public::SessionsController < Devise::SessionsController
   end
 
 
-  # private
+  private
 
-  # def reject_member
-  #   @member = Member.find_by(email: params[:member][:email].downcase)
-  #   if @member
-  #     if (@member.valid_password?(params[:member][:password]) && (@member.active_for_authentication? == true))
-  #       flash[:error] = "退会済みです。"
-  #       redirect_to new_member_session_path
-  #     end
-  #   else
-  #       flash[:error] = "必須項目を入力してください。"
-  #   end
-  # end
+  def reject_member
+    @member = Member.find_by(email: params[:member][:email].downcase)
+    if @member
+      if (@member.valid_password?(params[:member][:password]) && (@member.active_for_authentication? == true))
+        flash[:error] = "退会済みです。"
+        redirect_to new_member_session_path
+      end
+    else
+        flash[:error] = "必須項目を入力してください。"
+    end
+  end
 
 end

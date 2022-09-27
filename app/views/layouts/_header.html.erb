@@ -3,7 +3,6 @@
     <div class="container-fluid">
         <%= link_to "旅ラフ", root_path, class: "btn btn-outline-dark mx-2" %>
 
-
          <div class="d-flex justify-content-end">
             <% if admin_signed_in? %>
                 <%= render 'public/posts/category', categories: @categories %>

@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
 
-  # 顧客用
+  # ユーザー用
   devise_for :members, skip: [:passwords], controllers: {
     sessions:      'public/sessions',
     registrations: 'public/registrations'
   }
-
 
   devise_scope :member do
       post  'guests/sign_in' => 'public/sessions#new_guest', as: 'guest'
