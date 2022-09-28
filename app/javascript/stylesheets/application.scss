@@ -17,17 +17,78 @@ body {
 font-size: 10%;
 }
 
+// header{
+//   a{
+//     color: black;
+//     font-weight: normal;
+//   }
+//   p {
+//         padding: 10px;
+//         text-align: center;
+//       }
+
+// .header-dropdown{
+//   font-size: 150%;
+// }
+// }
 header{
-  a{
-    color: black;
-    font-weight: normal;
+  width: 100vw;
+  height: 90px;
+  background-color: #ffd500;
+
+
+  .header-logo{
+    float: left;
+    padding: 26px 20px;
+
   }
-  p {
-        padding: 10px;
-        text-align: center;
+
+  .header-list{
+     list-style: none;
+     display:flex;
+     justify-content: flex-end;
+
+      li{
+        list-style: none;
+        float: left;
+        padding: 26px 0px;
+
       }
 
-.header-dropdown{
-  font-size: 150%;
- }
+      .header-searchform{
+        float: left;
+        padding: 28.86px 0px;
+      }
+
+      .header-dropdown1{
+        float: left;
+        padding: 18px 0px;
+      }
+
+       .header-dropdown2{
+        float: left;
+        padding: 20px 20px 20px 0px;
+      }
+
+      .new_post{
+        float: left;
+        padding: 28px 0px 28px 10px;
+
+        a{
+          color: black;
+        }
+      }
+
+       p{
+        list-style: none;
+        float: left;
+        text-align: center;
+        padding: 26px 0px;
+        color: black;
+        font-weight: bold;
+      }
+    }
 }
+ .admin_header {
+  background-color: #c4ff4d;
+ }

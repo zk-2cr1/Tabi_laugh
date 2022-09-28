@@ -5,10 +5,8 @@
     </div>
     <!--ドロップメニューの設定 -->
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-        <td>
-          <% categories.each do |category| %>
-          <%= link_to category.name,posts_path(category_id: category.id), class: 'nav-link dropdown-item' %>
-          <% end %>
-　　　　</td>
+        <% categories.each do |category| %>
+        <%= link_to category.name,posts_path(category_id: category.id), class: 'nav-link dropdown-item' %>
+        <% end %>
     </div>
 </div>
