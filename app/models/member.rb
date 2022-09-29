@@ -22,4 +22,9 @@ def self.guest
     end
 end
 
+#ログイン時に退会済みのユーザーが同じアカウントでログインできないように制約
+def active_for_authentication?
+    super && (self.is_deleted == false)   #is_deletedがtrueならfalseを返すようにしている
+end
+
 end

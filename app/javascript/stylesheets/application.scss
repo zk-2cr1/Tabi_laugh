@@ -11,6 +11,7 @@ body {
   margin : 0 auto;
 }
 
+// 区切り線（全ページ共通）
  .hr1{
     position: relative;
   	height: 3px;
@@ -20,6 +21,7 @@ body {
   	background-image: linear-gradient( 135deg, #FD6585 10%, #0D25B9 100%);
     }
 
+// ヘッダーレイアウト
 header{
   width: 100vw;
   height: 90px;
@@ -80,6 +82,7 @@ header{
  .admin_header {
   background-color: #c4ff4d;
  }
+
 
  .table-mypage{
     list-style: none;

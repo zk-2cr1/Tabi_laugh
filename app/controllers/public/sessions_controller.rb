@@ -25,12 +25,10 @@ class Public::SessionsController < Devise::SessionsController
   def reject_member
     @member = Member.find_by(email: params[:member][:email])
     if @member
-           #入力されたパスワードが正しいことを確認
-      if @member.valid_password?(params[:member][:password]) && !@member.is_deleted
+           #入力されたパスワードが正しいことを確認、かつ、退会済みであること
+      if @member.valid_password?(params[:member][:password]) && @member.is_deleted == true
         flash[:error] = "退会済みです。"
         redirect_to new_member_session_path
-      else
-        flash[:error] = "必須項目を入力してください。"
       end
     end
   end

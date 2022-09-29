@@ -15,8 +15,11 @@ class Admin::MembersController < ApplicationController
 
   def update
     @member = Member.find(params[:id])
-    @member.update(member_params)
-    redirect_to admin_members_path
+    if @member.update(member_params)
+       redirect_to admin_members_path
+    else
+      render 'edit'
+    end
   end
 
 
