@@ -12,6 +12,8 @@ class Member < ApplicationRecord
 
   has_one_attached :profile_image
 
+  scope :only_active, -> { where(is_deleted: true) }
+
 def self.guest
   find_or_create_by!(email: 'guest@guest.com') do |member|
     member.password = SecureRandom.urlsafe_base64

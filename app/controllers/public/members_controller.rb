@@ -23,7 +23,7 @@ class Public::MembersController < ApplicationController
   end
 
   def withdraw
-     @member.update(is_deleted: true)
+     @member.update(is_deleted: false)   #is_deletedカラムをfalseに変更することにより削除フラグを立てる
      reset_session
      redirect_to root_path
   end

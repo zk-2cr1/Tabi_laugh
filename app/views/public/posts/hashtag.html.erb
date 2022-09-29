@@ -1,6 +1,7 @@
 <div class="container">
 <div class="row justify-content-center">
      <div class='col-10'>
+       <br>
 <h3 class="section-ttl font-weight-bold">#<%= @tag.hashname %></h3>
 
     <table class = "table">
@@ -23,7 +24,7 @@
                </td>
                <td><%= link_to post.title, post_path(post) %></td>
                <td><%= post.body %></td>
-               <td><%= link_to post.category.name %></td>
+               <td><%= link_to post.category.name, posts_path(category_id: post.category.id) %></td>
             </tr>
           <% end %>
           <%= paginate @posts %>

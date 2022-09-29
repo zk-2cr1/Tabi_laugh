@@ -21,15 +21,17 @@ class Public::SessionsController < Devise::SessionsController
 
   private
 
+  #ユーザーの論理削除のための記述。退会後は、同じアカウントでは利用できない。
   def reject_member
-    @member = Member.find_by(email: params[:member][:email].downcase)
+    @member = Member.find_by(email: params[:member][:email])
     if @member
-      if (@member.valid_password?(params[:member][:password]) && (@member.active_for_authentication? == true))
+           #入力されたパスワードが正しいことを確認
+      if @member.valid_password?(params[:member][:password]) && !@member.is_deleted
         flash[:error] = "退会済みです。"
         redirect_to new_member_session_path
-      end
-    else
+      else
         flash[:error] = "必須項目を入力してください。"
+      end
     end
   end
 

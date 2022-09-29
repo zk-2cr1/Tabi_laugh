@@ -7,30 +7,19 @@ body {
   background-image: url("../images/BG.jpg");
 }
 
-
 .bg {
   margin : 0 auto;
 }
 
+ .hr1{
+    position: relative;
+  	height: 3px;
+  	border-width: 0;
+  	background-color: #00bcd4;
+  	background-image: -webkit-linear-gradient( 135deg, #FD6585 10%, #0D25B9 100%);
+  	background-image: linear-gradient( 135deg, #FD6585 10%, #0D25B9 100%);
+    }
 
-.card-text{
-font-size: 10%;
-}
-
-// header{
-//   a{
-//     color: black;
-//     font-weight: normal;
-//   }
-//   p {
-//         padding: 10px;
-//         text-align: center;
-//       }
-
-// .header-dropdown{
-//   font-size: 150%;
-// }
-// }
 header{
   width: 100vw;
   height: 90px;
@@ -82,8 +71,7 @@ header{
        p{
         list-style: none;
         float: left;
-        text-align: center;
-        padding: 26px 0px;
+        padding: 35px 100px 35px 200px;
         color: black;
         font-weight: bold;
       }
@@ -92,3 +80,29 @@ header{
  .admin_header {
   background-color: #c4ff4d;
  }
+
+ .table-mypage{
+    list-style: none;
+
+
+    .image{
+      float: left;
+    }
+
+    .title{
+      font-size: 100%;
+      padding-left: 100px;
+    }
+    .body{
+      font-size: 80%;
+      padding-left: 100px;
+      padding-top: 10px;
+    }
+
+}
+
+.bookmark{
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+}

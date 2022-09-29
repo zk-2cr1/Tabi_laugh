@@ -34,8 +34,7 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
       t.string :name, null: false
       t.string :nick_name, null: false
       t.text   :introduction
-      t.boolean :is_deleted, null: false, default: false
-      t.datetime :deleted_at
+      t.boolean :is_deleted, default: true, null: false
 
       t.timestamps null: false
     end

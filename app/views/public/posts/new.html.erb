@@ -15,10 +15,10 @@
   <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
 
       <p>タイトル</p>
-      <p><%= f.text_field :title, size: 100 %></p>
+      <p><%= f.text_field :title, size: 80 %></p>
 
       <p>内容</p>
-      <p><%= f.text_area :body, size: "100x20" %></p>
+      <p><%= f.text_area :body, size: "80x15" %></p>
 
     <div class="row justify-content-md-center">
       <div><%= f.file_field :image %></div>

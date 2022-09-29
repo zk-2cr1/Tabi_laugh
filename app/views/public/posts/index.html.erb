@@ -18,7 +18,7 @@
           <th></th>
           <th>タイトル</th>
           <th>内容</th>
-          <th>カテゴリー</th>
+
        </tr>
 
         <% if @posts.first %>
@@ -35,7 +35,7 @@
                    <% end %>
 
                <td><%= post.body %></td>
-               <td><%= post.category.name %></td>
+
               </tr>
            <% end %>
            	<%= paginate @posts %>
