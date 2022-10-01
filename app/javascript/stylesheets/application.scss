@@ -90,16 +90,25 @@ header{
 
     .image{
       float: left;
+
     }
 
     .title{
-      font-size: 100%;
+      font-size: 150%;
+      padding-left: 100px;
+      a{
+        color: black;
+        display:block
+      }
+    }
+    .time{
+      font-size: 80%;
       padding-left: 100px;
     }
     .body{
-      font-size: 80%;
+      font-size: 100%;
       padding-left: 100px;
-      padding-top: 10px;
+      // padding-top: 10px;
     }
 
 }

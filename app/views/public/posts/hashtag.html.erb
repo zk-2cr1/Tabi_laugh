@@ -10,13 +10,16 @@
           <th></th>
           <th>タイトル</th>
           <th>内容</th>
+          <th>ハッシュタグ</th>
           <th>カテゴリー</th>
        </tr>
           <% @posts.each do |post| %>
             <tr>
                <td><%= link_to post_path(post) do %>
                      <% if post.image.attached? %>
-                     <%= image_tag post.image, size:'80x50' %>
+                       <% post.image.first(1).each do |image| %> 　　<!--fisrt(1)で初めの一枚のみ表示-->
+                       <%= image_tag image, size:'80x50' %>
+                       <% end %>
                      <% else %>
                      <%= image_tag "/no-image.png", size:'80x50' %>
                      <% end %>
@@ -24,6 +27,7 @@
                </td>
                <td><%= link_to post.title, post_path(post) %></td>
                <td><%= post.body %></td>
+               <td><%= render_with_hashtags(post.caption) %></td>
                <td><%= link_to post.category.name, posts_path(category_id: post.category.id) %></td>
             </tr>
           <% end %>

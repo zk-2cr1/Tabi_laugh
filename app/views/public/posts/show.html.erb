@@ -3,36 +3,28 @@
   <div class="row justify-content-center">
     <h4 class="section-ttl font-weight-bold"><%= @post.title %></h4>
   </div>
-  
+
   <div class="row justify-content-center">
-    <!--リンク付きハッシュタグ-->
-     <!--ヘルパーメソッド"simple_format"でフォームの改行反映-->
-    <%= simple_format(render_with_hashtags(@post.body)) %>
+
+    <%= simple_format(@post.body) %>  <!--ヘルパーメソッド"simple_format"でフォームの改行反映-->
+    <%= render_with_hashtags(@post.caption) %> <!--リンク付きハッシュタグ-->
   </div>
 
   <div class="row justify-content-center">
     <% if @post.image.attached? %>
-    <td><%= image_tag @post.image, width: '30%', height: '30%' %></td>
+        <% @post.image.each do |image| %>
+    <td><%= image_tag image, width: '30%', height: '30%' %></td>
+        <% end %>
     <% end %>
   </div>
 
+
 <li class="bookmark">
    <% if member_signed_in? %>
-    <!--ブックマーク-->
-    <% if @post.favorited?(current_member) %>
-        <!-- 一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
-        <%= link_to post_favorite_path(@post.id), method: :delete do %>
-            <span><i class="fa-solid fa-heart"></i>︎</span>
-        <% end %>
-    <% else %>
-        <!-- 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
-        <%= link_to post_favorites_path(@post.id), method: :post do %>
-            <span><i class="fa-regular fa-heart"></i></span>
-        <% end %>
-    <% end %>
+   　<div class="favorite_<%= @post.id %>"><%= render "public/favorites/favorite", post: @post %></div>
    <% end %>
    </li>
-   
+
   <div class="row justify-content-end">
     <% if @post.member == current_member %>
        <td><%= link_to 'Edit', edit_post_path(@post), class: "btn btn-success btn-sm" %></td>
@@ -62,7 +54,8 @@
       <% @comments.each do |comment| %>
        <td>
        <%= comment.body %>
-        <% if comment.post.member == current_member %>
+
+      　<% if comment.member == current_member %>
        <%= link_to 'Destroy', comment_path(comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-sm" %>
        <% end %>
        </td>

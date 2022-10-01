@@ -6,20 +6,22 @@ class Post < ApplicationRecord
   has_many :post_hashtag_relations, dependent: :destroy
   has_many :hashtags, through: :post_hashtag_relations
 
-  has_one_attached :image
+  has_many_attached :image
 
   validates :title, presence: true
   validates :body, presence: true
 
-  def favorited?(member)
+# ブックマーク（いいね）機能
+  #ユーザーidがfavoriteテーブル内に存在するかどうかを判別
+  def favorited_by?(member)
       favorites.where(member_id: member.id).exists?
   end
 
 # ハッシュタグ機能
-# DBへのコミット直前に実施する
+  #DBへのコミット直前に実施する
   after_create do
     post = Post.find_by(id: self.id)
-    hashtags  = self.body.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+    hashtags  = self.caption.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     post.hashtags = []
     hashtags.uniq.map do |hashtag|
       #ハッシュタグは先頭の'#'を外した上で保存
@@ -31,7 +33,7 @@ class Post < ApplicationRecord
   before_update do
     post = Post.find_by(id: self.id)
     post.hashtags.clear
-    hashtags = self.body.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+    hashtags = self.caption.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     hashtags.uniq.map do |hashtag|
       tag = Hashtag.find_or_create_by(hashname: hashtag.delete('#'))
       post.hashtags << tag

@@ -2,9 +2,9 @@
     <div class='col-md-3 offset-sm-1'>
       <br>
         <% if @member.profile_image.attached? %>
-          <%= image_tag @member.profile_image, class: "rounded-circle", size:'100x100' %>
+          <%= image_tag @member.profile_image, style:"border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
         <% else %>
-          <%= image_tag "/no-image.png", class: "rounded-circle", size:'100x100' %>
+          <%= image_tag "/no-image.png", style:"border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
         <% end %>
 
         <div class="row justify-content-end">
@@ -26,15 +26,17 @@
                 <li class="image">
                   <%= link_to post_path(post) do %>
                       <% if post.image.attached? %>
-                      <%= image_tag post.image, size:'80x50' %>
+                      <% post.image.first(1).each do |image| %>   <!--fisrt(1)で初めの一枚だけ表示-->
+                       <%= image_tag image, size:'80x50' %>
+                       <% end %>
                       <% else %>
-                      <%= image_tag "/no-image.png", size:'80x50' %>
+                      <%= image_tag "/no-image.png", size: '80x50' %>
                       <% end %>
                   <% end %>
                 </li>
-
           <li class="title"><%= link_to post.title, post_path(post) %></li>
-          <li class="body"><%= render_with_hashtags(post.body) %></li>
+          <li class="time"><%= post.created_at.strftime("%Y-%m-%d %H:%M") %></li>
+          <li class="body"><%= post.body.truncate(30) %></li>   <!--truncateヘルパーメソッドで表示文字数を制限-->
           <hr class="hr1">
            <% end %>
            <%= paginate @post %>
@@ -52,7 +54,9 @@
          <div class="card w-15 shadow-sm" >
      　　       <%= link_to post_path(favorite.post) do %>
                   <% if favorite.post.image.attached? %>
-                  <%= image_tag favorite.post.image, class:"card-img-top", size:'200x200' %>
+                 　 <% favorite.post.image.each do |image| %>
+                    <%= image_tag image, size:'80x50' %>
+                    <% end %>
                   <% else %>
                   <%= image_tag "/no-image.png", class:"card-img-top", size:'200x200' %>
                   <% end %>
@@ -75,12 +79,13 @@
                           <strong><i class="far fa-flag"></i><span><%= favorite.post.title %></span></strong>
                           <% end %>
                         </p>
-                        <p class="card-text"><%= render_with_hashtags(favorite.post.body) %></p>
+                        <p class="card-text"><%= favorite.post.body %></p>
+                        <p class="card-text"><%= render_with_hashtags(favorite.post.caption) %></p>
                          <span><i class="fas fa-user"></i> By <%= favorite.post.member.nick_name %> ｜
                           <!--ブックマーク-->
-                             <% if favorite.post.favorited?(current_member) %>
+                             <% if favorite.post.favorited_by?(current_member) %>
                                 <!-- 一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
-                                <%= link_to post_favorite_path(favorite.post.id, favorite.member.id), method: :delete do %>
+                                <%= link_to post_favorites_path(favorite.post.id, favorite.member.id), method: :delete do %>
                                     <span><i class="fa-solid fa-heart"></i>︎</span>
                                 <% end %>
                             <% else %>

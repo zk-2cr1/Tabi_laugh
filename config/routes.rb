@@ -22,12 +22,11 @@ Rails.application.routes.draw do
       get   '/posts/search'            => 'posts#search',        as: 'search'
 
       resources :posts do
-        resources :favorites, only: [:create, :destroy]
+        resource  :favorites, only: [:create, :destroy]
         resource  :comments,  only: [:create]
       end
 
       resources :comments,  only: [:destroy]
-      resources :worlds,    only: [:index, :show]
       resources :categories,    only: [:index]
 
     end
@@ -44,7 +43,6 @@ Rails.application.routes.draw do
       resources :posts,    only: [:index, :show, :destroy]
       resources :members,  only: [:index, :show, :edit, :update]
       resources :comments, only: [:index, :show, :destroy]
-      resources :worlds
       resources :categories, only: [:index, :create, :edit, :update]
     end
 

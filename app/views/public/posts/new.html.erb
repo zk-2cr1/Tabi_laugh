@@ -20,8 +20,11 @@
       <p>内容</p>
       <p><%= f.text_area :body, size: "80x15" %></p>
 
+      <p>#ハッシュタグ</p>
+      <p><%= f.text_area :caption, size: "80x3" %></p>
+
     <div class="row justify-content-md-center">
-      <div><%= f.file_field :image %></div>
+      <div><%= f.file_field :image, multiple: true %></div> <!--multiple:true 複数画像投稿-->
     </div>
 
 <br>
