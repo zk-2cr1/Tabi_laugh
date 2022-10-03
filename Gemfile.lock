@@ -284,7 +284,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.6, >= 6.1.6.1)
   rails-i18n
-  sass-rails (>= 5.1.0)
+  sass-rails (>= 6.0.0)
   selenium-webdriver (>= 4.0.0.rc1)
   spring
   sqlite3 (~> 1.4)
