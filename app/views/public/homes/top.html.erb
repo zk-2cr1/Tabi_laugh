@@ -1,11 +1,6 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/image-map-resizer/1.0.10/js/imageMapResizer.min.js"></script>
-<script>
-  imageMapResize();
-</script>
-
- <br>
+<br>
 <div class="row justify-content-center">
-   <h6 class="section-ttl font-weight-bold">エリア別の投稿を見る</h6>
+  <h6 class="section-ttl font-weight-bold">エリア別の投稿を見る</h6>
 </div>
 
 <div class="row justify-content-center">
@@ -21,6 +16,7 @@
     </map>
   </div>
 </div>
+
 <br>
 <br>
 <div class="row justify-content-center">
@@ -28,42 +24,7 @@
 </div>
 
 <div class="row justify-content-center">
-  <div class='col-10'>
-    <table class = "table">
-      <hr class="hr1">
-           <tr>
-              <th></th>
-              <th>タイトル</th>
-              <th>内容</th>
-              <th>カテゴリー</th>
-           </tr>
-            <% if @posts.first %>
-               <% @posts.each do |post| %>
-                 <tr>
-                   <td>
-                     <%= link_to post_path(post) do %>
-                         <% if post.image.attached? %>
-                          <% post.image.first(1).each do |image| %>   <!--fisrt(1)で初めの一枚だけ表示-->
-                          <%= image_tag image, size:'80x50' %>
-                          <% end %>
-                         <% else %>
-                         <%= image_tag "/no-image.png", size:'80x50' %>
-                         <% end %>
-                   </td>
-                   <td><%= link_to post.title, post_path(post) %></td>
-                       <% end %>
-
-                   <td><%= post.body %></td>
-                  <td><%= link_to post.category.name, posts_path(category_id: post.category.id) %></td>
-                  </tr>
-               <% end %>
-
-               	<%= paginate @posts %>
-            <% else %>
-    			<h4>対応する投稿はありませんでした。</h4>
-   <hr class="hr1">
-    		<% end %>
-    </table>
+  <div class='col-3'>
+   <%= render 'public/posts/post', post: @post %>
   </div>
 </div>
-

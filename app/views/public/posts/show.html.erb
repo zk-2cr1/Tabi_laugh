@@ -1,67 +1,82 @@
+<!--マイページ-->
 <div class="container">
-      <br>
-  <div class="row justify-content-center">
-    <h4 class="section-ttl font-weight-bold"><%= @post.title %></h4>
-  </div>
-
-  <div class="row justify-content-center">
-
-    <%= simple_format(@post.body) %>  <!--ヘルパーメソッド"simple_format"でフォームの改行反映-->
-    <%= render_with_hashtags(@post.caption) %> <!--リンク付きハッシュタグ-->
-  </div>
-
-  <div class="row justify-content-center">
-    <% if @post.image.attached? %>
+  <div class="back">
+    <br>
+    <div class="col-8">
+      <h4 class="section-ttl font-weight-bold"><%= @post.title %></h4>
+    </div>
+    <hr class="hr2">
+    <div class="col-8">
+      <%= simple_format(@post.body) %><!--ヘルパーメソッド"simple_format"でフォームの改行反映-->
+    </div>
+    <div class="row justify-content-center">
+      <% if @post.image.attached? %>
         <% @post.image.each do |image| %>
-    <td><%= image_tag image, width: '30%', height: '30%' %></td>
+        <%= image_tag image, width: '50%' %>
         <% end %>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+    <br>
+    <br>
+    <div class="col-12">
+      <div class="tag"><%= render_with_hashtags(@post.caption) %></div> <!--リンク付きハッシュタグ-->
+    </div>
+    <br>
+    <hr class="hr2">
+
+    <li class="bookmark">
+       <% if member_signed_in? %>
+       　<div class="favorite_<%= @post.id %>"><%= render "public/favorites/favorite", post: @post %></div>
+       <% end %>
+    </li>
+
+    <div class="row justify-content-end">
+      <div class='col-2'>
+        <% if @post.member == current_member %>
+          <%= link_to edit_post_path(@post), class: "btn btn-Light btn-sm" do %>
+           <i class="fa fa-pen-to-square">編集</i>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
 
 
-<li class="bookmark">
-   <% if member_signed_in? %>
-   　<div class="favorite_<%= @post.id %>"><%= render "public/favorites/favorite", post: @post %></div>
-   <% end %>
-   </li>
 
-  <div class="row justify-content-end">
-    <% if @post.member == current_member %>
-       <td><%= link_to 'Edit', edit_post_path(@post), class: "btn btn-success btn-sm" %></td>
-       <td><%= link_to 'Destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-sm" %></td>
-    <% end %>
-
-
-  </div>
-
-
-  <div class="row justify-content-center">
     <% if member_signed_in? %>
-    <h6 class="font-weight-bold">コメント</h6>
+ <div class="row justify-content-center">
+
     <p><%= form_with model:[@post, @comment], method: :post do |f| %></p>
     <p><%= f.text_area :body, size: "30x5" %></p>
     <p><%= f.hidden_field :post_id, value: @post.id %></p>
-    <p><%= f.submit 'コメントする' %></p>
+
+    <p class="button">
+      <%= f.button :type => "submit", class: "btn btn-success btn-sm" do %>
+      <i class="fa fa-comment-dots" style="color: white;">コメントする</i>
+      <% end %>
+    </p>
        <% end %>
     <% end %>
   </div>
 
     <br>
-
-    <h6 class="font-weight-bold text-center">コメント一覧</h6>
-    <table class = "table text-center">
-        <tr>
+<div class="row justify-content-center">
+    <h6 class="font-weight-bold">コメント(<%= @comments.count %>)</h6>
+</div>
+<div class="row justify-content-center">
+       <div class='col-6'>
       <% @comments.each do |comment| %>
-       <td>
-       <%= comment.body %>
+          <hr class="hr2">
+        <p class="comment"><%= comment.body %></p>
 
-      　<% if comment.member == current_member %>
-       <%= link_to 'Destroy', comment_path(comment.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-sm" %>
-       <% end %>
-       </td>
-       </tr>
+      　 <% if comment.member == current_member %>
+           <%= link_to comment_path(comment.id), method: :delete, data: { confirm: '本当に消しますか？' } do %>
+              <i class="fa-regular fa-trash-can" style="color: #ff7f7f;"></i>
+            <% end %>
+         <% end %>
+
       <% end %>
-    </table>
-
-
+     <%= paginate @comments %>
+     </div>
+</div>
+</div>
 </div>

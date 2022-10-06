@@ -5,6 +5,7 @@ ja:
         introduction: '紹介'  #カラム名
       post:
         title: 'タイトル'
-        body:  '本文'
-      category:
-        Category:  'カテゴリー'
+        body: '本文'
+        category: 'カテゴリー'
+      comment:
+        comment: 'コメント'

@@ -2,13 +2,7 @@
 <br>
    <h4 class="section-ttl font-weight-bold">記事を書く</h4>
 
-<% if @post.errors.any? %>
-    <ul style="color: red ">
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-<% end %>
+<%= render 'layouts/errors', obj: @post %>
 </div>
 
 <div class="row justify-content-md-center">
@@ -26,6 +20,8 @@
     <div class="row justify-content-md-center">
       <div><%= f.file_field :image, multiple: true %></div> <!--multiple:true 複数画像投稿-->
     </div>
+
+
 
 <br>
     <div class="row justify-content-md-center">

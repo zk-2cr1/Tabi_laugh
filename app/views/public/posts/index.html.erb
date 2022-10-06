@@ -1,6 +1,6 @@
 <div class="container">
 <div class="row justify-content-center">
-     <div class='col-10'>
+     <div class='col-6'>
          <% if params[:category_id] %>
          <br>
             <h6 class="section-ttl font-weight-bold"><%= @category.body %></h6>
@@ -13,38 +13,12 @@
 		 <% end %>
 
 <!--投稿一覧-->
-    <table class = "table">
-       <tr>
-          <th></th>
-          <th>タイトル</th>
-          <th>内容</th>
-
-       </tr>
-
         <% if @posts.first %>
-           <% @posts.each do |post| %>
-             <tr>
-               <td><%= link_to post_path(post) do %>
-                     <% if post.image.attached? %>
-                       <% post.image.first(1).each do |image| %>   <!--fisrt(1)で初めの一枚だけ表示-->
-                       <%= image_tag image, size:'80x50' %>
-                       <% end %>
-                     <% else %>
-                     <%= image_tag "/no-image.png", size:'80x50' %>
-                     <% end %>
-               </td>
-               <td><%= link_to post.title, post_path(post) %></td>
-                   <% end %>
-
-               <td><%= post.body %></td>
-
-              </tr>
-           <% end %>
-           	<%= paginate @posts %>
+           <%= render 'public/posts/post', post: @posts %>
         <% else %>
 			<h4>対応する投稿はありませんでした。</h4>
 		<% end %>
-    </table>
-  </div>
+
+
 </div>
 </div>

@@ -1,38 +1,10 @@
 <div class="container">
 <div class="row justify-content-center">
-     <div class='col-10'>
+     <div class='col-6'>
        <br>
 <h3 class="section-ttl font-weight-bold">#<%= @tag.hashname %></h3>
 
-    <table class = "table">
-      <table class = "table">
-       <tr>
-          <th></th>
-          <th>タイトル</th>
-          <th>内容</th>
-          <th>ハッシュタグ</th>
-          <th>カテゴリー</th>
-       </tr>
-          <% @posts.each do |post| %>
-            <tr>
-               <td><%= link_to post_path(post) do %>
-                     <% if post.image.attached? %>
-                       <% post.image.first(1).each do |image| %> 　　<!--fisrt(1)で初めの一枚のみ表示-->
-                       <%= image_tag image, size:'80x50' %>
-                       <% end %>
-                     <% else %>
-                     <%= image_tag "/no-image.png", size:'80x50' %>
-                     <% end %>
-                   <% end %>
-               </td>
-               <td><%= link_to post.title, post_path(post) %></td>
-               <td><%= post.body %></td>
-               <td><%= render_with_hashtags(post.caption) %></td>
-               <td><%= link_to post.category.name, posts_path(category_id: post.category.id) %></td>
-            </tr>
-          <% end %>
-          <%= paginate @posts %>
-    </table>
+  <%= render 'public/posts/post', post: @posts %>
       </div>
     </div>
     </div>

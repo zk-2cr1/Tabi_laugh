@@ -10,7 +10,7 @@ class Public::PostsController < ApplicationController
 
     def index
       @posts = Post.all
-      @post = Post.new
+      @post = Post.where(id: params[:id])
       @categories = Category.all
       if params[:category_id]
           @category = @categories.find(params[:category_id])
@@ -25,7 +25,7 @@ class Public::PostsController < ApplicationController
 
     def show
       @post = Post.find(params[:id])
-      @comments = @post.comments                  #投稿詳細に関連付けてあるコメントを全取得
+      @comments = @post.comments.order('id DESC').page(params[:page]).per(5)                  #投稿詳細に関連付けてあるコメントを全取得
       @comment = Comment.new
     end
 

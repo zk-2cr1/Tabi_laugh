@@ -3,8 +3,10 @@ class Public::MembersController < ApplicationController
    before_action :set_current_member
 
   def show
-      @favorite = Favorite.where(member_id: current_member.id).page(params[:page]).per(9)
+      @favorites = Favorite.all
+      @favorite = Favorite.where(member_id: current_member.id).page(params[:page]).order(created_at: "DESC").per(9)
       @post = Post.where(member_id: current_member.id).includes(:member).order("created_at DESC").page(params[:page]).per(5)
+      @comments = Comment.all
   end
 
   def edit

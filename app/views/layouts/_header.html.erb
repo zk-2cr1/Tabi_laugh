@@ -56,11 +56,10 @@
               <div class="header-dropdown2">
                   <!-- 切替ボタンの設定 -->
                   <div class="nav-link" id="dropdownMenuButton button_group" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     <i class="fa-regular fa-user fa-2x"></i>
+                     <i class="fa-regular fa-circle-user fa-2x"></i>
                   </div>
                   <!-- ドロップメニューの設定 -->
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                      <%= link_to 'マイページ', mypage_path, class: 'nav-link dropdown-item' %>
                       <%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: 'nav-link dropdown-item' %>
                       <%= link_to 'アカウント編集', edit_member_registration_path, class: 'nav-link dropdown-item' %>
                   </div>
@@ -90,7 +89,7 @@
                 <div class="header-dropdown2">
                   <!-- 切替ボタンの設定 -->
                   <div class="nav-link" id="dropdownMenuButton button_group" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     <i class="fa-regular fa-user fa-2x"></i>
+                     <i class="fa-regular fa-circle-user fa-2x"></i>
                   </div>
                   <!-- ドロップメニューの設定 -->
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
