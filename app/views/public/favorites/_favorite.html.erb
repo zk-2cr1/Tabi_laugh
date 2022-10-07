@@ -7,6 +7,6 @@
     <% else %>
         <!-- 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
         <%= link_to post_favorites_path(post_id: post.id), method: :post, remote: true do %>
-           <i class="fas fa-heart" aria-hidden="true"></i>
+           <i class="fa-regular fa-heart" aria-hidden="true" style="color: red;"></i>
         <% end %>
     <% end %>

@@ -1,9 +1,10 @@
 <!--マイページ-->
 <div class="container">
-  <div class="back">
+  <div class="mypage">
     <br>
     <div class="col-8">
       <h4 class="section-ttl font-weight-bold"><%= @post.title %></h4>
+      <p class="time"><%= @post.created_at.strftime("%Y/%m/%d %H:%M") %>
     </div>
     <hr class="hr2">
     <div class="col-8">
@@ -22,29 +23,50 @@
       <div class="tag"><%= render_with_hashtags(@post.caption) %></div> <!--リンク付きハッシュタグ-->
     </div>
     <br>
-    <hr class="hr2">
 
-    <li class="bookmark">
-       <% if member_signed_in? %>
-       　<div class="favorite_<%= @post.id %>"><%= render "public/favorites/favorite", post: @post %></div>
-       <% end %>
-    </li>
-
-    <div class="row justify-content-end">
-      <div class='col-2'>
+    <li class="edit-btn">
         <% if @post.member == current_member %>
           <%= link_to edit_post_path(@post), class: "btn btn-Light btn-sm" do %>
            <i class="fa fa-pen-to-square">編集</i>
           <% end %>
         <% end %>
-      </div>
-    </div>
+    </li>
+    <li class="bookmark">
+       <% if member_signed_in? %>
+       　<div class="favorite_<%= @post.id %>"><%= render "public/favorites/favorite", post: @post %></div>
+       <% end %>
+       </li>
+  <hr class="hr2">
+    <br>
+<div class="col-8">
+    <h6 class="font-weight-bold">コメント(<%= @comments.count %>)</h6>
+</div>
 
+       <div class='col-8'>
+      <% @comments.each do |comment| %>
+        <hr class="hr2">
+        <li class="comment"><%= comment.body %></li>
+        <li class="comment2">
+          <i class="fa-regular fa-user"></i>
+          <%= comment.member.nick_name %> |
+          <%= comment.created_at.strftime("%Y/%m/%d %H:%M")  %>
+        </li>
+        <li class="comment-delete">
+      　 <% if comment.member == current_member %>
+           <%= link_to comment_path(comment.id), method: :delete, data: { confirm: '本当に消しますか？' } do %>
+              <i class="fa-regular fa-trash-can" style="color: #ff7f7f;"></i>
+            <% end %>
+         <% end %>
+        </li>
+
+      <% end %>
+        <hr class="hr2">
+     <%= paginate @comments %>
+       </div>
 
 
     <% if member_signed_in? %>
  <div class="row justify-content-center">
-
     <p><%= form_with model:[@post, @comment], method: :post do |f| %></p>
     <p><%= f.text_area :body, size: "30x5" %></p>
     <p><%= f.hidden_field :post_id, value: @post.id %></p>
@@ -58,25 +80,5 @@
     <% end %>
   </div>
 
-    <br>
-<div class="row justify-content-center">
-    <h6 class="font-weight-bold">コメント(<%= @comments.count %>)</h6>
-</div>
-<div class="row justify-content-center">
-       <div class='col-6'>
-      <% @comments.each do |comment| %>
-          <hr class="hr2">
-        <p class="comment"><%= comment.body %></p>
-
-      　 <% if comment.member == current_member %>
-           <%= link_to comment_path(comment.id), method: :delete, data: { confirm: '本当に消しますか？' } do %>
-              <i class="fa-regular fa-trash-can" style="color: #ff7f7f;"></i>
-            <% end %>
-         <% end %>
-
-      <% end %>
-     <%= paginate @comments %>
-     </div>
-</div>
 </div>
 </div>

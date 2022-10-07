@@ -14,7 +14,7 @@
         </li>
         <li class="title"><%= link_to post.title, post_path(post) %></li>
         <li class="body"><%= post.body.truncate(30) %></li>   <!--truncateヘルパーメソッドで表示文字数を制限-->
-        <li class="time"><%= post.created_at.strftime("%Y-%m-%d %H:%M") %>
+        <li class="time"><%= post.created_at.strftime("%Y/%m/%d %H:%M") %>
           <i class="fas fa-heart" style="color: red;"></i><%= post.favorites.count %>
           <i class="fa-regular fa-comment-dots" style="color: #696969;"></i><%= post.comments.count %>
         </li>
