@@ -1,10 +1,11 @@
 <div class="container">
-<div class="row justify-content-center">
+  <div class="bg">
+    <div class="row justify-content-center">
      <div class='col-6'>
        <br>
-<h3 class="section-ttl font-weight-bold">#<%= @tag.hashname %></h3>
-
-  <%= render 'public/posts/post', post: @posts %>
-      </div>
+       <h3 class="section-ttl font-weight-bold">#<%= @tag.hashname %></h3>
+       <%= render 'public/posts/post', post: @posts %>
+     </div>
     </div>
-    </div>
+  </div>
+</div>

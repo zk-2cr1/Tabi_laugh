@@ -1,10 +1,16 @@
 <!--マイページ-->
 <div class="container">
-  <div class="mypage">
+  <div class="post-show">
     <br>
     <div class="col-8">
       <h4 class="section-ttl font-weight-bold"><%= @post.title %></h4>
-      <p class="time"><%= @post.created_at.strftime("%Y/%m/%d %H:%M") %>
+      <li class="time"><%= @post.created_at.strftime("%Y/%m/%d %H:%M") %></li>
+      <li class="cat">
+        エリア：
+          <%= link_to posts_path(category_id: @category.id) do %>
+          <%= @category.name %>
+          <% end %>
+      </li>
     </div>
     <hr class="hr2">
     <div class="col-8">
@@ -23,7 +29,6 @@
       <div class="tag"><%= render_with_hashtags(@post.caption) %></div> <!--リンク付きハッシュタグ-->
     </div>
     <br>
-
     <li class="edit-btn">
         <% if @post.member == current_member %>
           <%= link_to edit_post_path(@post), class: "btn btn-Light btn-sm" do %>

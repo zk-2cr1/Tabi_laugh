@@ -8,7 +8,7 @@ body {
 }
 
 .bg {
-  margin : 0 auto;
+  background: rgba(255, 255, 255, 40%);
 }
 
 // 区切り線（全ページ共通）
@@ -141,12 +141,24 @@ header{
 }
 
 
-.mypage{
+.post-show{
   background: rgba(255, 255, 255, 60%);
 
   .time{
+    list-style: none;
     font-size: 80%;
     color: #7E7E7E;
+  }
+  .cat{
+    list-style: none;
+    font-size: 80%;
+    padding-top: 10px;
+
+    a{
+     color: #ea5550;
+     font-weight: bold;
+
+    }
   }
 
   .tag{
@@ -226,7 +238,7 @@ header{
 }
 
 footer{
-   width: 100vw;
+  width: 100vw;
   height: 70px;
   background-color: #ffd500;
 }
