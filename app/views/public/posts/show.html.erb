@@ -43,9 +43,10 @@
 </div>
 
        <div class='col-8'>
+         <div class='comment'>
       <% @comments.each do |comment| %>
         <hr class="hr2">
-        <li class="comment"><%= comment.body %></li>
+        <p><%= simple_format(comment.body) %></p>
         <li class="comment2">
           <i class="fa-regular fa-user"></i>
           <%= comment.member.nick_name %> |
@@ -61,21 +62,21 @@
 
       <% end %>
         <hr class="hr2">
-     <%= paginate @comments %>
+       </div>
        </div>
 
 
     <% if member_signed_in? %>
- <div class="row justify-content-center">
+ <div class='col-8'>
     <p><%= form_with model:[@post, @comment], method: :post do |f| %></p>
     <p><%= f.text_area :body, size: "30x5" %></p>
     <p><%= f.hidden_field :post_id, value: @post.id %></p>
 
-    <p class="button">
+    <li class="button">
       <%= f.button :type => "submit", class: "btn btn-success btn-sm" do %>
       <i class="fa fa-comment-dots" style="color: white;">コメントする</i>
       <% end %>
-    </p>
+    </li>
        <% end %>
     <% end %>
   </div>

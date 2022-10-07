@@ -25,7 +25,7 @@ class Public::PostsController < ApplicationController
 
     def show
       @post = Post.find(params[:id])
-      @comments = @post.comments.order('id DESC').page(params[:page]).per(5)                  #投稿詳細に関連付けてあるコメントを全取得
+      @comments = @post.comments.order('id DESC')              #投稿詳細に関連付けてあるコメントを全取得
       @comment = Comment.new
     end
 

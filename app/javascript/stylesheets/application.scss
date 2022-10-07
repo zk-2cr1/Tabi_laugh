@@ -140,9 +140,6 @@ header{
 
 }
 
-.button{
-  padding-left: 300px;
-}
 
 .mypage{
   background: rgba(255, 255, 255, 60%);
@@ -178,25 +175,27 @@ header{
 
   }
 
- .comment{
-   padding-left: 30px;
-  list-style: none;
-  white-space:　pre-wrap;
+.comment{
 
- }
+ p{
+  padding-left: 10px;
+  }
+
 .comment2{
   list-style: none;
   font-size: 70%;
   float: left;
   margin-top: 25px;
-  padding-left: 30px;
+  padding-left: 10px;
   color: #7E7E7E;
+  }
 
-}
 .comment-delete{
   list-style: none;
   text-align: right;
   margin-top: 20px;
+  }
+
 }
 
   .btn-Light{
@@ -204,7 +203,17 @@ header{
     background-color: #FFD500;
     border-color: #FFD500;
   }
+  .button{
+    list-style: none;
+    padding-left: 75px;
+    padding-bottom: 25px;
 
+  .btn-success{
+    color: #504946;
+    background-color: #00ac97;
+    border-color: #00ac97;
+  }
+ }
 }
 
 .button-space{
@@ -214,4 +223,10 @@ header{
   .btn-danger{
     margin-left: 10px;
   }
+}
+
+footer{
+   width: 100vw;
+  height: 70px;
+  background-color: #ffd500;
 }
