@@ -8,21 +8,27 @@
 
 Category.create([
     { name: 'アジア',
+      image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/image/日本.jpeg"), filename:"日本.jpeg"),
       body: 'エリア説明'
     },
     { name: 'ヨーロッパ',
+      image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/image/ベネチア.jpeg"), filename:"ベネチア.jpeg"),
       body: 'エリア説明'
     },
-     { name: '北米',
+    { name: '北米',
+      image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/image/アメリカ.jpeg"), filename:"アメリカ.jpeg"),
       body: 'エリア説明'
     },
-     { name: '南米',
+    { name: '南米',
+      image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/image/ウユニ塩湖.jpeg"), filename:"ウユニ塩湖.jpeg"),
       body: 'エリア説明'
     },
-     { name: 'アフリカ',
+    { name: 'アフリカ',
+      image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/image/ケニア.jpeg"), filename:"ケニア.jpeg"),
       body: 'エリア説明'
     },
-     { name: 'オーストラリア',
+    { name: 'オーストラリア',
+      image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/image/ホワイトヘブンビーチ.jpeg"), filename:"ホワイトヘブンビーチ.jpeg"),
       body: 'エリア説明'
     },
 ])

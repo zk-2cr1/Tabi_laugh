@@ -14,7 +14,13 @@
       <p><%= f.text_area :caption, size: "80x3" %></p>
 
     <div class="row justify-content-md-center">
-      <div><%= f.file_field :image, multiple: true %></div>
+      <%= f.file_field :image, multiple: true %>
+    </div>
+
+    <br>
+    <div class="row justify-content-md-center">
+      カテゴリー
+       <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください" %>
     </div>
 
 <br>

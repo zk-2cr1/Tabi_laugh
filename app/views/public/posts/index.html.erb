@@ -4,8 +4,13 @@
     <div class='col-6'>
 
       <% if params[:category_id] %>
-       <br>
-        <h6 class="section-ttl font-weight-bold"><%= @category.body %></h6>
+
+       <div class="area">
+         <%= image_tag @category.image %>
+          <p class="name"><%= @category.name %></p>
+          <p class="body"><%= @category.body %></p>
+       </div>
+
        <br>
         <h3 class="section-ttl font-weight-bold"><%= @category.name %>の投稿一覧</h3>
         <h4 class="section-ttl">(全<%= @all_posts_count %>件)</h4>
@@ -25,3 +30,4 @@
    </div>
   </div>
 </div>
+
