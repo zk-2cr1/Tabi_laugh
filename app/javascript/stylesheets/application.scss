@@ -9,6 +9,7 @@ body {
 
 .bg {
   background: rgba(255, 255, 255, 40%);
+  min-height: 100vh; //bodyの高さが最小でもビューポートの高さ100%
 }
 
 // 区切り線（全ページ共通）
@@ -143,6 +144,7 @@ header{
 
 .post-show{
   background: rgba(255, 255, 255, 60%);
+  min-height: 100vh;
 
   .time{
     list-style: none;
@@ -237,8 +239,15 @@ header{
   }
 }
 
+.container-app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 footer{
-  width: 100vw;
+  margin-top: auto;
   height: 70px;
   background-color: #ffd500;
+
 }
