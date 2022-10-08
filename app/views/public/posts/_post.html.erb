@@ -18,7 +18,7 @@
           <i class="fas fa-heart" style="color: red;"></i><%= post.favorites.count %>
           <i class="fa-regular fa-comment-dots" style="color: #696969;"></i><%= post.comments.count %>
         </li>
-        <li class="body"><%= render_with_hashtags(post.caption) %></li>
+        <li class="tag"><%= render_with_hashtags(post.caption) %></li>
       <hr class="hr1">
       <% end %>
       <%= paginate post %>

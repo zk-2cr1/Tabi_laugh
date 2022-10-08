@@ -3,6 +3,7 @@
 
 @charset 'UTF-8';
 
+
 body {
   background-image: url("../images/BG.jpg");
 }
@@ -17,13 +18,15 @@ body {
     position: relative;
   	height: 3px;
   	border-width: 0;
-  	background-color: #00bcd4;
-  	background-image: -webkit-linear-gradient( 135deg, #FD6585 10%, #0D25B9 100%);
-  	background-image: linear-gradient( 135deg, #FD6585 10%, #0D25B9 100%);
+  	background-color: #b4ada9;
     }
 
 .hr2{
-    border-top: 2px solid #eee7e0;
+   position: relative;
+  	height: 3px;
+  	border-width: 0;
+  	background-color: #eee7e0;
+
 }
 
 
@@ -89,7 +92,7 @@ header{
   background-color: #c4ff4d;
  }
 
-
+// 投稿一覧
 .post_list{
     list-style: none;
 
@@ -100,7 +103,11 @@ header{
       font-size: 150%;
       padding-left: 100px;
       a{
+        text-decoration: none;
         color: black;
+      }
+      a:hover {
+       color: #ffd500;
       }
     }
     .time{
@@ -111,37 +118,79 @@ header{
       font-size: 100%;
       padding-left: 100px;
     }
+    .tag{
+      font-size: 90%;
+      padding-left: 100px;
+      a{
+        text-decoration: none;
+        color: turquoise;
+      }
+      a:hover {
+       color: #ea5550;
+      }
+    }
 }
 
-
+// ブックマーク
 .card{
-    float: left;
+
+  .image{
+    margin-top: -25px;
+    a{
+      text-decoration: none;
+    }
+  }
+
   .card-prof{
     float: left;
   }
 
   .card-title{
     font-size: 150%;
-    padding-left: 30px;
+    padding-left: 20px;
+    margin-top: -15px;
+    a{
+      text-decoration: none;
+      color: black;
+      }
+    a:hover {
+      color: #ffd500;
+      }
   }
   .card-time{
     font-size: 80%;
-    padding-left: 30px;
+    color: #7E7E7E;
+    padding-left: 20px;
+    margin-top: -15px;
 
   }
   .card-text{
     font-size: 100%;
-    padding-left: 30px;
+    padding-left: 20px;
+    margin-top: -15px;
 
   }
   .card-text2{
     font-size: 80%;
-    padding-left: 30px;
+    padding-left: 20px;
+    margin-top: -8px;
   }
+  .card-tag{
+      font-size: 90%;
+      padding-left: 20px;
+      margin-top: -15px;
+      a{
+        text-decoration: none;
+        color: turquoise;
+      }
+      a:hover {
+       color: #ea5550;
+      }
+    }
 
 }
 
-
+// 投稿詳細ページ
 .post-show{
   background: rgba(255, 255, 255, 60%);
   min-height: 100vh;
@@ -157,6 +206,7 @@ header{
     padding-top: 10px;
 
     a{
+     text-decoration: none;
      color: #ea5550;
      font-weight: bold;
 
@@ -169,7 +219,8 @@ header{
     font-size: 80%;
     padding: 30px 20px;
     a{
-      color: #1999b7;
+     text-decoration: none;
+     color: #1999b7;
     }
   }
 
@@ -233,9 +284,13 @@ header{
 .button-space{
   .btn-success{
     margin-right: 10px;
+    background-color: #00ac97;
+    border-color: #00ac97;
   }
   .btn-danger{
     margin-left: 10px;
+    background-color: #ea5550;
+    border-color: #ea5550;
   }
 }
 
@@ -251,3 +306,31 @@ footer{
   background-color: #ffd500;
 
 }
+
+// ページネーション
+.pagination {
+  display: flex;
+  justify-content: center;
+  font-size: 50%;
+  font-weight: bold;
+
+  li{
+    a{
+     border: none;
+     color: #b4ada9;
+    }
+    a:hover {
+     color: turquoise;
+     background-color: white;
+    }
+  }
+  .active{
+    a {
+    color: turquoise;
+    background-color: white;
+    }
+  }
+
+}
+
+

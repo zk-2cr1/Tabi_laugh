@@ -1,38 +1,37 @@
 <div class="container">
-<br>
-   <h4 class="section-ttl font-weight-bold">記事を書く</h4>
+  <div class="bg">
+  <br>
+  <%= render 'layouts/errors', obj: @post %>
+    <div class="row justify-content-md-center">
+      <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
 
-<%= render 'layouts/errors', obj: @post %>
+          <p>タイトル</p>
+          <p><%= f.text_field :title, size: 80 %></p>
+
+          <p>内容</p>
+          <p><%= f.text_area :body, size: "80x15" %></p>
+
+          <p>#ハッシュタグ</p>
+          <p><%= f.text_area :caption, size: "80x3" %></p>
+
+        <div class="row justify-content-md-center">
+          <div><%= f.file_field :image, multiple: true %></div> <!--multiple:true 複数画像投稿-->
+        </div>
+
+        <br>
+        <div class="row justify-content-md-center">
+          <div>カテゴリー</div>
+          <div><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください" %></div>
+        </div>
+
+        <br>
+        <div class="button-space">
+        <div class="row justify-content-md-center">
+          <div><%= f.submit '投稿する', class: "btn btn-success btn-md" %></div>
+        </div>
+        </div>
+
+      <% end %>
+    </div>
 </div>
-
-<div class="row justify-content-md-center">
-  <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
-
-      <p>タイトル</p>
-      <p><%= f.text_field :title, size: 80 %></p>
-
-      <p>内容</p>
-      <p><%= f.text_area :body, size: "80x15" %></p>
-
-      <p>#ハッシュタグ</p>
-      <p><%= f.text_area :caption, size: "80x3" %></p>
-
-    <div class="row justify-content-md-center">
-      <div><%= f.file_field :image, multiple: true %></div> <!--multiple:true 複数画像投稿-->
-    </div>
-
-
-
-<br>
-    <div class="row justify-content-md-center">
-      <div>カテゴリー</div>
-      <div><%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください" %></div>
-    </div>
-
-<br>
-    <div class="row justify-content-md-center">
-      <div><%= f.submit '投稿する', class: "btn btn-success btn-md" %></div>
-    </div>
-
-  <% end %>
 </div>
