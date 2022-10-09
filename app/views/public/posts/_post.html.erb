@@ -8,7 +8,7 @@
               <%= image_tag image, size:'80x50' %>
               <% end %>
             <% else %>
-              <%= image_tag "/no-image.png", size: '80x60' %>
+              <%= image_tag "/no-image.png", size: '80x50' %>
             <% end %>
           <% end %>
         </li>
@@ -19,6 +19,10 @@
           <i class="fa-regular fa-comment-dots" style="color: #696969;"></i><%= post.comments.count %>
         </li>
         <li class="tag"><%= render_with_hashtags(post.caption) %></li>
+        <!--下書き状態の場合-->
+        <% if post.draft? %>
+          <li class="post"><i class="fa-solid fa-triangle-exclamation fa-beat"><%= post.status_i18n %></i></li>
+        <% end %>
       <hr class="hr1">
       <% end %>
       <%= paginate post %>

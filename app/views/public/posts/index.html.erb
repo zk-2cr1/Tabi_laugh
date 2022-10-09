@@ -3,8 +3,7 @@
    <div class="row justify-content-center">
     <div class='col-6'>
 
-      <% if params[:category_id] %>
-
+    <% if params[:category_id] %>
        <div class="area">
          <%= image_tag @category.image %>
           <p class="name"><%= @category.name %></p>
@@ -14,18 +13,19 @@
        <br>
         <h3 class="section-ttl font-weight-bold"><%= @category.name %>の投稿一覧</h3>
         <h4 class="section-ttl">(全<%= @all_posts_count %>件)</h4>
-　　　<% else %>
+　　<% else %>
 　　　 <br>
 			  <h3 class="section-ttl font-weight-bold">投稿一覧</h3>
 			  <h4 class="section-ttl">(全<%= @all_posts_count %>件)</h4>
 		  <% end %>
 
 <!--投稿一覧-->
-        <% if @posts.first %>
-           <%= render 'public/posts/post', post: @posts %>
-        <% else %>
-			<h4>対応する投稿はありませんでした。</h4>
-		<% end %>
+     <% if @posts.first %>
+       <%= render 'public/posts/post', post: @posts %>
+     <% else %>
+ 			   <h4>対応する投稿はありませんでした。</h4>
+		  <% end %>
+
     </div>
    </div>
   </div>

@@ -11,6 +11,8 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
 
+  enum status: { draft:0, publish:1 }
+
 # ブックマーク（いいね）機能
   #ユーザーidがfavoriteテーブル内に存在するかどうかを判別
   def favorited_by?(member)

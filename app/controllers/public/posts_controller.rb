@@ -9,14 +9,13 @@ class Public::PostsController < ApplicationController
 
 
     def index
-      @posts = Post.all
       @post = Post.where(id: params[:id])
       @categories = Category.all
       if params[:category_id]
           @category = @categories.find(params[:category_id])
-          all_posts = @category.posts
+          all_posts = @category.posts.publish
       else
-          all_posts = Post.includes(:category)
+          all_posts = Post.publish.includes(:category)
       end
       @posts = all_posts.page(params[:page]).per(10)
       @all_posts_count = all_posts.count
@@ -70,18 +69,18 @@ class Public::PostsController < ApplicationController
     def hashtag
       @member = current_member
       @tag = Hashtag.find_by(hashname: params[:name])
-      @posts = @tag.posts.page(params[:page]).per(10)
+      @posts = @tag.posts.publish.page(params[:page]).per(10)
     end
 
 
     def search
-      @posts = Post.search_for(params[:keyword], params[:method]).page(params[:page]).per(10)
+      @posts = Post.publish.search_for(params[:keyword], params[:method]).page(params[:page]).per(10)
     end
 
     private
 
     def post_params
-      params.require(:post).permit(:title, :body, :caption, {image:[]}, :member_id, :category_id)  #{image:[]}複数画像投稿
+      params.require(:post).permit(:title, :body, :caption, {image:[]}, :status, :member_id, :category_id)  #{image:[]}複数画像投稿
     end
 
 end

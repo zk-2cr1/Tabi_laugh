@@ -13,17 +13,24 @@
       <p>#ハッシュタグ</p>
       <p><%= f.text_area :caption, size: "80x3" %></p>
 
-    <div class="row justify-content-md-center">
+    <p class="row justify-content-md-center">
       <%= f.file_field :image, multiple: true %>
-    </div>
+    </p>
 
-    <br>
-    <div class="row justify-content-md-center">
+
+    <p class="row justify-content-md-center">
       カテゴリー
        <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください" %>
-    </div>
+    </p>
 
-<br>
+    <p class="row justify-content-md-center">
+       <%= f.radio_button :status, Post.statuses.key(0) %>
+       <%= f.label :status, Post.statuses_i18n[:draft] %>
+
+       <%= f.radio_button :status, Post.statuses.key(1) %>
+       <%= f.label :status, Post.statuses_i18n[:publish] %>
+    </p>
+
     <div class="row justify-content-md-center">
       <div class="button-space">
       <%= f.submit '変更を保存', class: "btn btn-success btn-md" %>
