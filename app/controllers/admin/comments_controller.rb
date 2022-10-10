@@ -6,6 +6,8 @@ class Admin::CommentsController < ApplicationController
   def show
   end
 
+  
+
   def destroy
     @comment = current_member.comments.find(params[:id])
        if @comment.destroy

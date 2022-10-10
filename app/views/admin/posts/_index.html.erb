@@ -1,0 +1,29 @@
+<table class = "table">
+    <tr>
+      <th></th>
+      <th>タイトル</th>
+      <th>内容</th>
+      <th>投稿者</th>
+      <th>公開ステータス</th>
+    </tr>
+    <% post.each do |post| %>
+    <tr>
+      <td class="image">
+        <%= link_to admin_post_path(post) do %>
+          <% if post.image.attached? %>
+            <% post.image.first(1).each do |image| %> 　　<!--fisrt(1)で初めの一枚のみ表示-->
+              <%= image_tag image, size:'80x50' %>
+            <% end %>
+          <% else %>
+            <%= image_tag "/no-image.png", size:'80x50' %>
+          <% end %>
+      </td>
+      <td><%= link_to post.title, admin_post_path(post) %></td>
+        <% end %>
+      <td><%= post.body.truncate(30) %></td>
+      <td><%= post.member.nick_name %></td>
+      <td><%= post.status_i18n %></td>
+    </tr>
+    <% end %>
+    <%= paginate post %>
+</table>

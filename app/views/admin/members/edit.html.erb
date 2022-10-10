@@ -1,8 +1,6 @@
 <div class='container'>
   <div class'row'>
-    <h3><div class="d-inline p-3 mb-2 bg-light text-dark font-weight-bold">
-      <%= @member.nick_name %>さんのユーザー情報編集
-    </div></h3>
+    <h3 class="font-weight-bold"><%= @member.nick_name %>さんのユーザー情報編集</h3>
 
     <%= form_with model: @member,url: admin_member_path, method: "patch" do |f| %>
     <div class='col-md-9 mx-auto'>
@@ -37,7 +35,7 @@
       </table>
 
         <div class="form-group d-grid gap-1 col-5 mx-auto">
-          <%= f.submit '保存を変更', class: 'btn btn-success btn-md' %>
+          <%= f.submit '保存を変更', class: 'btn btn-success btn-sm' %>
         </div>
      <% end %>
     </div>

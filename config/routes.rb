@@ -18,8 +18,8 @@ Rails.application.routes.draw do
       get   'members/unsubscribe'      => 'members#unsubscribe', as: 'unsubscribe'
       patch 'members/withdraw'         => 'members#withdraw',    as: 'withdraw_member'
       patch 'members/information'      => 'members#update',      as: 'update_information'
-      get   '/post/hashtag/:name'      => 'posts#hashtag',       as: 'hashtag'
-      get   '/posts/search'            => 'posts#search',        as: 'search'
+      get   'post/hashtag/:name'      => 'posts#hashtag',       as: 'hashtag'
+      get   'posts/search'            => 'posts#search',        as: 'search'
 
       resources :posts do
         resource  :favorites, only: [:create, :destroy]
@@ -39,6 +39,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
       get 'top' => 'homes#top', as: 'top'
+      get 'hashtag/:name' => 'posts#hashtag', as: 'hashtag'
 
       resources :posts,    only: [:index, :show, :destroy]
       resources :members,  only: [:index, :show, :edit, :update]

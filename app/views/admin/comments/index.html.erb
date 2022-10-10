@@ -1,12 +1,8 @@
- <div class='col-md-3 offset-sm-1'>
+ <div class='row justify-content-center'>
     <h4 class="section-ttl font-weight-bold">コメント一覧</h4>
-      <table class = "table">
-        <tr>
-          <% @comments.each do |comment| %>
-           <td><%= link_to comment.body, admin_post_path(comment.post) %></td>
-           <td><%= link_to comment.member.name, admin_member_path(comment.member_id) %></td>
-        </tr>
-          <% end %>
-        <%= paginate @comments %>
-     </table>
-</div>
+  </div>
+  <div class='row justify-content-center'>
+    <div class='col-5'>
+      <%= render 'admin/comments/index', comment: @comments %>
+    </div>
+  </div>

@@ -1,7 +1,5 @@
 class Public::CommentsController < ApplicationController
-  
   def create
-       
        @comment = current_member.comments.new(comment_params)
        @comment.member_id = current_member.id
        if @comment.save

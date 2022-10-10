@@ -19,23 +19,27 @@ body {
   	height: 3px;
   	border-width: 0;
   	background-color: #b4ada9;
-    }
+}
 
 .hr2{
-   position: relative;
+    position: relative;
   	height: 3px;
   	border-width: 0;
   	background-color: #eee7e0;
-
 }
 
+.hr3{
+    position: relative;
+  	height: 3px;
+  	border-width: 0;
+  	background-color: #9d8e87;
+}
 
 // ヘッダーレイアウト
 header{
   width: 100vw;
   height: 70px;
   background-color: #ffd500;
-
 
   .header-logo{
     float: left;
@@ -86,10 +90,11 @@ header{
         color: black;
         font-weight: bold;
       }
-    }
+  }
 }
+
  .admin_header {
-  background-color: #c4ff4d;
+  background-color: #00a1e9;
  }
 
 // 投稿一覧
@@ -277,7 +282,7 @@ header{
   }
   .button{
     list-style: none;
-    padding-left: 75px;
+    padding-left: 295px;
     padding-bottom: 25px;
 
   .btn-success{
@@ -305,13 +310,6 @@ header{
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-footer{
-  margin-top: auto;
-  height: 70px;
-  background-color: #ffd500;
-
 }
 
 // ページネーション
@@ -377,4 +375,76 @@ footer{
       width: 350px;
     }
 
+}
+
+// フッター
+footer{
+  margin-top: auto;
+  height: 50px;
+  background-color: #ffd500;
+
+}
+ .admin_footer {
+  background-color: #00a1e9;
+ }
+
+// 管理者側投稿詳細
+ .admin-post-show{
+  .time{
+    list-style: none;
+    font-size: 80%;
+    color: #7E7E7E;
+  }
+  .cat{
+    list-style: none;
+    font-size: 80%;
+    padding-top: 10px;
+
+    a{
+     text-decoration: none;
+     color: #ea5550;
+     font-weight: bold;
+
+    }
+  }
+
+  .tag{
+    background: #eee7e0;
+    height: 100px;
+    font-size: 80%;
+    padding: 30px 20px;
+    a{
+     text-decoration: none;
+     color: #1999b7;
+    }
+  }
+
+  .delete-btn{
+    list-style: none;
+    float: right;
+    margin-top: -18px;
+    margin-right: 15px;
+  }
+
+.comment{
+
+ p{
+  padding-left: 10px;
+  }
+
+.comment2{
+  list-style: none;
+  font-size: 70%;
+  float: left;
+  margin-top: 25px;
+  padding-left: 10px;
+  color: #7E7E7E;
+  }
+
+.comment-delete-btn{
+  list-style: none;
+  text-align: right;
+  margin-top: 20px;
+  }
+ }
 }
