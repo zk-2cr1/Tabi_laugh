@@ -1,9 +1,9 @@
 <table class = "table">
-  <tr>
+  <tr class="table-info">
     <th>内容</th>
     <th>投稿者</th>
   </tr>
-  <tr>
+  <tr class="table-info">
     <% comment.each do |comment| %>
     <td><%= link_to comment.body, admin_post_path(comment.post) %></td>
     <td><%= link_to comment.member.nick_name, admin_member_path(comment.member_id) %></td>
