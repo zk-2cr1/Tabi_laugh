@@ -6,7 +6,7 @@
           	<h3 class="section-ttl font-weight-bold">検索結果</h3>
 
                 <% if @posts.first %>
-                   <%= render 'public/posts/post', post: @posts %>
+                   <%= render 'public/posts/index', post: @posts %>
 
                    	<%= paginate @posts %>
                 <% else %>
