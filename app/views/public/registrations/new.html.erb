@@ -7,9 +7,16 @@
  <div class = "container col-lg-3">
 
   <h3 class="section-ttl font-weight-bold">新規会員登録</h3>
+  <% if @member.errors.any? %>
+    <ul style="color: red">
+      <% @member.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+<% end %>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
+       
 
   <table class="member_info member_form">
     <tbody>
@@ -17,7 +24,7 @@
          <p>名前</p>
          <p><%= f.text_field :name, :size=>"50", :placeholder =>"例：田中太郎" %></p>
  <br>
-         <p>表示名</p>
+         <p>ユーザー名</p>
          <p><%= f.text_field :nick_name, :size=>"50", :placeholder =>"例：ニックネーム" %></p>
 <br>
          <p>メールアドレス</p>

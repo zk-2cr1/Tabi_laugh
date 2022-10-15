@@ -5,6 +5,8 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :introduction, length: { maximum: 200 }
+  validates :name, presence: true
+  validates :nick_name, presence: true
 
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy

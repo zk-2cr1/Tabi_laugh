@@ -9,4 +9,8 @@ ja:
         category: 'カテゴリー'
       comment:
         comment: 'コメント'
- 
+      member:
+        name: '名前'
+        nick_name: 'ユーザー名'
+        email: 'メールアドレス'
+        password: 'パスワード'
