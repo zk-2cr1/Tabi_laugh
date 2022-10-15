@@ -6,7 +6,7 @@
       <li class="time"><%= @post.created_at.strftime("%Y/%m/%d %H:%M") %></li>
       <li class="cat">
         エリア：
-          <%= link_to posts_path(category_id: @category.id) do %>
+          <%= link_to admin_posts_path(category_id: @category.id) do %>
           <%= @category.name %>
           <% end %>
       </li>
