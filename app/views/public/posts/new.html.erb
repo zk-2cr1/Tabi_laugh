@@ -1,9 +1,8 @@
 <div class="container">
-  <div class="bg">
-  <br>
-  <%= render 'layouts/errors', obj: @post %>
-    <div class="row justify-content-md-center">
-      <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
+  <div class="bg"></br>
+    <%= render 'layouts/errors', obj: @post %>
+      <div class="row justify-content-md-center">
+        <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
 
           <p>タイトル</p>
           <p><%= f.text_field :title, size: 80 %></p>
@@ -14,11 +13,10 @@
           <p>#ハッシュタグ</p>
           <p><%= f.text_area :caption, size: "80x3" %></p>
 
-        <p class="row justify-content-md-center">
-          <%= f.file_field :image, multiple: true %>  <!--multiple:true 複数画像投稿-->
-        </p>
+          <p class="row justify-content-md-center">
+            <%= f.file_field :image, multiple: true %>  <!--multiple:true 複数画像投稿-->
+          </p>
 
-      
         <p class="row justify-content-md-center">
            カテゴリー
            <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください" %>
@@ -33,7 +31,7 @@
         </p>
 
 
-     
+
         <div class="button-space">
         <div class="row justify-content-md-center">
           <div><%= f.submit '投稿する', class: "btn btn-success btn-md" %></div>

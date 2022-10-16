@@ -1,46 +1,47 @@
+<div class = "container">
+  <div class="bg"></br>
+
 <div class="row justify-content-end">
   <div class="col-2">
-  会員登録お済みの方 <%= link_to "ログイン", new_member_session_path, class: "btn btn-outline-secondary btn-sm" %>
+  会員登録お済みの方
+  <%= link_to "ログイン", new_member_session_path, class: "btn btn-outline-secondary btn-sm" %>
   </div>
 </div>
 
- <div class = "container col-lg-3">
 
-  <h3 class="section-ttl font-weight-bold">新規会員登録</h3>
-  <% if @member.errors.any? %>
-    <ul style="color: red">
-      <% @member.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-<% end %>
+  <h3 class="font-weight-bold">新規会員登録</h3>
+   <%= render 'layouts/errors', obj: @member %>
+   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+   <div class="account_edit">
+   <div class="row justify-content-center">
+     <div class='col-6'>
 
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-       
-
-  <table class="member_info member_form">
-    <tbody>
-<br>
-         <p>名前</p>
+         <li>名前</li>
          <p><%= f.text_field :name, :size=>"50", :placeholder =>"例：田中太郎" %></p>
- <br>
-         <p>ユーザー名</p>
+
+         <li>ユーザー名</li>
          <p><%= f.text_field :nick_name, :size=>"50", :placeholder =>"例：ニックネーム" %></p>
-<br>
-         <p>メールアドレス</p>
+
+         <li>メールアドレス</li>
          <p><%= f.email_field :email, autocomplete: "email", :size=>"50", :placeholder =>"例：test@test.com" %></p>
-<br>
-         <p>パスワード</p>
+
+         <li>パスワード</li>
          <p><%= f.password_field :password, autocomplete: "new-password", :size=>"50", :placeholder =>"例：6文字以上の半角英数字" %></p>
-<br>
-         <p>パスワード(確認用)</p>
+
+         <li>パスワード(確認用)</li>
          <p><%= f.password_field :password_confirmation, autocomplete: "new-password", :size=>"50", :placeholder =>"例：6文字以上の半角英数字" %></p>
 
-      </tbody>
-  　</table>
 
-  <div class="actions d-grid gap-1 col-5 mx-auto">
-    <%= f.submit "新規登録",class: "btn btn-success btn-lg" %>
+   <div class="button-space">
+    <div class="row justify-content-center">
+      <%= f.submit "新規登録",class: "btn btn-success btn-md" %>
+    </div>
+  </div>
+  
+  </div>
+  </div>
   </div>
 <% end %>
+
+</div>
 </div>
