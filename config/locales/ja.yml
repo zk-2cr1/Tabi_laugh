@@ -3,14 +3,13 @@ ja:
     attributes:
       member:                 #model名
         introduction: '紹介'  #カラム名
+        name: '名前'
+        nick_name: 'ユーザー名'
+        email: 'メールアドレス'
+        password: 'パスワード'
       post:
         title: 'タイトル'
         body: '本文'
         category: 'カテゴリー'
       comment:
         comment: 'コメント'
-      member:
-        name: '名前'
-        nick_name: 'ユーザー名'
-        email: 'メールアドレス'
-        password: 'パスワード'
