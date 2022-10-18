@@ -2,41 +2,40 @@
   <div class="bg"></br>
 
     <div class="row justify-content-end">
-      <div class="col-2">
-      会員登録お済みの方
-      <%= link_to "ログイン", new_member_session_path, class: "btn btn-outline-secondary btn-sm" %>
+      <div class="col-3">
+      会員登録お済みの方 &emsp; <%= link_to "ログイン", new_member_session_path, class: "btn btn-outline-secondary btn-sm" %>
       </div>
     </div>
 
     <h3 class="font-weight-bold">新規会員登録</h3>
      <%= render 'layouts/errors', obj: @member %>
      <div class="account_edit">
-     <div class="row justify-content-center">
-       <div class='col-6'>
-           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-             <li>名前</li>
-             <p><%= f.text_field :name, :size=>"50", :placeholder =>"例：田中太郎" %></p>
+       <div class="row justify-content-center">
+         <div class='col-6'>
+             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+               <li>名前</li>
+               <p><%= f.text_field :name, :size=>"50", :placeholder =>"例：田中太郎" %></p>
 
-             <li>ユーザー名</li>
-             <p><%= f.text_field :nick_name, :size=>"50", :placeholder =>"例：ニックネーム" %></p>
+               <li>ユーザー名</li>
+               <p><%= f.text_field :nick_name, :size=>"50", :placeholder =>"例：ニックネーム" %></p>
 
-             <li>メールアドレス</li>
-             <p><%= f.email_field :email, autocomplete: "email", :size=>"50", :placeholder =>"例：test@test.com" %></p>
+               <li>メールアドレス</li>
+               <p><%= f.email_field :email, autocomplete: "email", :size=>"50", :placeholder =>"例：test@test.com" %></p>
 
-             <li>パスワード</li>
-             <p><%= f.password_field :password, autocomplete: "new-password", :size=>"50", :placeholder =>"例：6文字以上の半角英数字" %></p>
+               <li>パスワード</li>
+               <p><%= f.password_field :password, autocomplete: "new-password", :size=>"50", :placeholder =>"例：6文字以上の半角英数字" %></p>
 
-             <li>パスワード(確認用)</li>
-             <p><%= f.password_field :password_confirmation, autocomplete: "new-password", :size=>"50", :placeholder =>"例：6文字以上の半角英数字" %></p>
+               <li>パスワード(確認用)</li>
+               <p><%= f.password_field :password_confirmation, autocomplete: "new-password", :size=>"50", :placeholder =>"例：6文字以上の半角英数字" %></p>
 
-             <div class="button-space">
-               <div class="row justify-content-center">
-                 <%= f.submit "新規登録",class: "btn btn-success btn-md" %>
+               <div class="button-space">
+                 <div class="row justify-content-center">
+                   <%= f.submit "新規登録",class: "btn btn-success btn-md" %>
+                 </div>
                </div>
-             </div>
-           <% end %>
+             <% end %>
+         </div>
        </div>
-     </div>
      </div>
 
   </div>

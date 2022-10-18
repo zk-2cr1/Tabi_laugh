@@ -21,7 +21,7 @@ def self.guest
     member.password = SecureRandom.urlsafe_base64
     member.name = 'ゲスト'
     member.nick_name = 'ゲストユーザー'
-    end
+  end
 end
 
 #ログイン時に退会済みのユーザーが同じアカウントでログインできないように制約
