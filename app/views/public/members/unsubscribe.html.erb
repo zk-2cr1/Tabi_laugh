@@ -1,13 +1,21 @@
-<div class="container my-5" style="height: 500px">
-  <div class="mx-auto text-center my-5 py-5">
-    <h5 class="font-weight-bold">退会しますか？</h5>
-    <br>
-    <h5>退会すると、ユーザー登録情報や<br>
-    これまでの投稿履歴が閲覧できなくなります。<br>
-    退会する場合は、<h5 class="font-weight-bold">退会する</h5>をクリックしてください。</h5>
-    <br>
-    <br>
-    <%= link_to "マイページに戻る", mypage_path, class: "btn btn-primary px-3 mx-2" %>
-    <%= link_to "退会する", withdraw_member_path, method: :patch, class: "btn btn-danger px-4 mx-2" %>
+<div class="container">
+  <div class="bg"></br>
+    <div class="row justify-content-md-center">
+    <div class="unsubscribe">
+      <h4>退会しますか？</h4>
+      <p>退会すると、ユーザー登録情報や</p>
+      <p>これまでの投稿履歴が閲覧できなくなります。</p>
+      <p>退会する場合は、</p>
+      <p>
+        <h5>退会する</h5>
+      </p>
+      <p>をクリックしてください。</p>
+
+      <div class="button-space">
+        <%= link_to "マイページに戻る", mypage_path, class: "btn btn-success px-3 mx-2" %>
+        <%= link_to "退会する", withdraw_member_path, method: :patch, class: "btn btn-danger px-4 mx-2" %>
+      </div>
+    </div>
+    </div>
   </div>
 </div>

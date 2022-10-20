@@ -9,9 +9,6 @@ class Public::MembersController < ApplicationController
       @comments = Comment.all
   end
 
-  def edit
-  end
-
   def update
       if @member.update(member_params)
          flash[:success] = "更新しました"
@@ -19,9 +16,6 @@ class Public::MembersController < ApplicationController
       else
         render "edit"
       end
-  end
-
-  def unsubscribe
   end
 
   def withdraw
