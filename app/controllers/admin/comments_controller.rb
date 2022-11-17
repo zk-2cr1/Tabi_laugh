@@ -3,13 +3,8 @@ class Admin::CommentsController < ApplicationController
      @comments = Comment.all.page(params[:page]).per(10)
   end
 
-  def show
-  end
-
-  
-
   def destroy
-    @comment = current_member.comments.find(params[:id])
+       @comment = Comment.find(params[:id])
        if @comment.destroy
           redirect_back(fallback_location: root_path)
        else
