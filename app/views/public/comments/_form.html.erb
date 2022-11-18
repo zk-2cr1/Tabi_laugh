@@ -1,0 +1,9 @@
+<%= form_with model: [post, comment], local: false do |f| %>
+  <%= f.text_area :body, size: "82x5" %>
+
+  <li class="button">
+  <%= f.button :type => "submit", class: "btn btn-success btn-sm" do %>
+    <i class="fa fa-comment-dots" style="color: white;">コメントする</i>
+  <% end %>
+  </li>
+<% end %>

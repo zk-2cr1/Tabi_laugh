@@ -22,10 +22,10 @@ Rails.application.routes.draw do
 
       resources :posts do
         resource :favorites, only: [:create, :destroy]
-        resource :comments,  only: [:create]
+        resources :comments,  only: [:create, :destroy]
       end
 
-      resources :comments,   only: [:destroy]
+     
       resources :categories, only: [:index]
     end
 

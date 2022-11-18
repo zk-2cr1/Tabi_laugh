@@ -24,9 +24,9 @@ class Public::PostsController < ApplicationController
 
     def show
       @post = Post.find(params[:id])
-      @comments = @post.comments.order('id DESC')              #投稿詳細に関連付けてあるコメントを全取得
-      @comment = Comment.new
       @category = @post.category             #投稿詳細に関連付けてあるカテゴリーを全取得
+      @comment = Comment.new
+      @comments = @post.comments              #投稿詳細に関連付けてあるコメントを全取得
     end
 
 
@@ -82,5 +82,4 @@ class Public::PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :body, :caption, {image:[]}, :status, :member_id, :category_id)  #{image:[]}複数画像投稿
     end
-
 end
