@@ -4,15 +4,13 @@ class Public::CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params)
     @comment.member_id = current_member.id
     @comment.save
-
   end
-
 
   def destroy
    @comment = Comment.find(params[:id])
    @comment.destroy
-
   end
+
 
   private
   def comment_params

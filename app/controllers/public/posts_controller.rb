@@ -26,7 +26,7 @@ class Public::PostsController < ApplicationController
       @post = Post.find(params[:id])
       @category = @post.category             #投稿詳細に関連付けてあるカテゴリーを全取得
       @comment = Comment.new
-      @comments = @post.comments              #投稿詳細に関連付けてあるコメントを全取得
+      @comments = @post.comments             #投稿詳細に関連付けてあるコメントを全取得
     end
 
 

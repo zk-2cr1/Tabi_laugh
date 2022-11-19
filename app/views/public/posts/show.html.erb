@@ -46,17 +46,9 @@
     <br>
 
     <div class="col-8">
-      <div class="counter">
-       <%= render "public/comments/counter", post: @post %>
-      </div>
+      <%= render "public/comments/counter", post: @post %>
+      <%= render "public/comments/index", post: @post %>
     </div>
-    <div class="col-8">
-      <div class="comment">
-        <%= render "public/comments/index", post: @post %>
-        <hr class="hr2">
-      </div>
-    </div>
-
 
     <% if member_signed_in? %>
       <div class="col-8">
@@ -64,6 +56,6 @@
       </div>
     <% end %>
 
-</div>
+  </div>
 </div>
 

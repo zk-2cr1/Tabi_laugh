@@ -279,7 +279,6 @@ header{
 .comment2{
   list-style: none;
   font-size: 70%;
-  float: left;
   margin-top: 25px;
   padding-left: 10px;
   color: #7E7E7E;
@@ -287,8 +286,8 @@ header{
 
 .comment-delete{
   list-style: none;
-  text-align: right;
-  margin-top: 20px;
+  float: right;
+  margin-top: -20px;
   }
 
 }
@@ -477,3 +476,15 @@ footer{
     font-weight: bold;
   }
 }
+
+// @media screen and (max-width: 1024px){
+//   .bg {
+//     background-color: blue;
+//     }
+// }
+
+// @media screen and (max-width: 480px){
+//   .bg {
+//   background-color: green;
+//   }
+// }
