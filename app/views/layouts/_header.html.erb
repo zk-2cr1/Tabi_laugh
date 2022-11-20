@@ -1,0 +1,91 @@
+
+<nav class="navbar navbar-expand-xl navbar-light" style="background-color: #ffd500;">
+  <div class="navbar-brand" href="#">
+    <%= link_to "旅ラフ", root_path, class: "btn btn-outline-dark mx-2 font-weight-bold" %>
+  </div>
+
+ <% if admin_signed_in? %>
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><%= link_to "管理者トップ", admin_top_path, class: "btn btn-outline-dark mx-2 font-weight-bold" %></li>
+        <li class="nav-item"><%= link_to "ユーザー一覧", admin_members_path, class: "btn btn-outline-dark mx-2 font-weight-bold" %></li>
+        <li class="nav-item"><%= link_to "投稿一覧", admin_posts_path, class: "btn btn-outline-dark mx-2 font-weight-bold" %></li>
+        <li class="nav-item"><%= link_to "コメント一覧", admin_comments_path, class: "btn btn-outline-dark mx-2 font-weight-bold" %></li>
+        <li class="nav-item dropdown">
+          <div class="nav-item btn btn-outline-dark mx-2 font-weight-bold" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">エリア</div>
+            <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+                <% @categories.each do |category| %>
+                <%= link_to category.name,admin_posts_path(category_id: category.id), class: 'nav-link dropdown-item' %>
+                <% end %>
+            </div>
+        </li>
+        <li class="nav-item"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-dark mx-2 font-weight-bold" %></li>
+        </ul>
+  </div>
+
+      <% elsif member_signed_in? %>
+       <p class="welcome">ようこそ、<%= current_member.nick_name %>さん！</p>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+
+               <li class="nav-item"><%= render 'layouts/search' %></li>
+
+                <li class="nav-item dropdown">
+          <div class="nav-item btn btn-outline-dark mx-2 font-weight-bold" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">エリア</div>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% @categories.each do |category| %>
+                <%= link_to category.name, posts_path(category_id: category.id), class: 'nav-link dropdown-item' %>
+                <% end %>
+            </div>
+        </li>
+
+              <li class="nav-item"><%= link_to '投稿一覧', posts_path, class: "btn btn-outline-dark mx-2 font-weight-bold" %></li>
+              <li class="nav-item"><%= link_to 'マイページ', mypage_path, class: "btn btn-outline-dark mx-2 font-weight-bold" %></li>
+                <!--新規投稿-->
+                <li class="nav-item dropdown">
+                  <%= link_to new_post_path, class: "btn mx-2" do %>
+                    <i class="fa-regular fa-square-plus fa-2x"></i>
+                  <% end %>
+                </li>
+               <li class="nav-item"><%= render 'layouts/login' %></li>
+
+              </ul>
+            </div>
+
+      <% else %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+              <li class="nav-item"><%= render 'layouts/search' %></li>
+
+              <li class="nav-item dropdown">
+              <div class="nav-item btn btn-outline-dark mx-2 font-weight-bold" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">エリア</div>
+              <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+
+                <% @categories.each do |category| %>
+                <%= link_to category.name, posts_path(category_id: category.id), class: 'nav-link dropdown-item' %>
+                <% end %>
+
+              </div>
+             </li>
+
+              <li class="nav-item"><%= link_to '投稿一覧', posts_path, class: "btn btn-outline-dark mx-2 font-weight-bold" %></li>
+              <li class="nav-item"><%= render 'layouts/login' %></li>
+
+  </ul>
+  </div>
+      <% end %>
+
+</nav>

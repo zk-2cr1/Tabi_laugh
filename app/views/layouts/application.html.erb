@@ -15,40 +15,7 @@
 
   <body>
     <div class="container-app">
-      <header class="<%= (admin_signed_in? ? "admin_header" : "" ) %>">
-        <div class="header-logo">
-          <%= link_to "旅ラフ", root_path, class: "btn btn-outline-dark mx-2 font-weight-bold" %>
-        </div>
-        <div class="header-list">
-            <% if admin_signed_in? %>
-              <li><%= link_to "管理者トップ", admin_top_path, class: "btn btn-outline-dark mx-2 font-weight-bold" %></li>
-              <li><%= link_to "ユーザー一覧", admin_members_path, class: "btn btn-outline-dark mx-2 font-weight-bold" %></li>
-              <li><%= link_to "投稿一覧", admin_posts_path, class: "btn btn-outline-dark mx-2 font-weight-bold" %></li>
-              <li><%= link_to "コメント一覧", admin_comments_path, class: "btn btn-outline-dark mx-2 font-weight-bold" %></li>
-              <li class="category"><%= render 'layouts/category', category: @categories %></li>
-              <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-dark mx-2 font-weight-bold" %></li>
-            <% elsif member_signed_in? %>
-              <p>ようこそ、<%= current_member.nick_name %>さん！</p>
-              <li class="header-searchform"><%= render 'layouts/search' %></li>
-              <li class="category"><%= render 'layouts/category', category: @categories %></li>
-              <li><%= link_to '投稿一覧', posts_path, class: "btn btn-outline-dark mx-2 font-weight-bold" %></li>
-              <li><%= link_to 'マイページ', mypage_path, class: "btn btn-outline-dark mx-2 font-weight-bold" %></li>
-              <!--新規投稿-->
-              <li class="new_post">
-                <%= link_to new_post_path do %>
-                  <i class="fa-regular fa-square-plus fa-2x"></i>
-                <% end %>
-              </li>
-              <li class="header-dropdown"><%= render 'layouts/login' %></li>
-            <% else %>
-              <li class="header-searchform"><%= render 'layouts/search' %></li>
-              <li class="category"><%= render 'layouts/category', category: @categories %></li>
-              <li><%= link_to '投稿一覧', posts_path, class: "btn btn-outline-dark mx-2 font-weight-bold" %></li>
-              <li class="header-dropdown"><%= render 'layouts/login' %></li>
-            <% end %>
-        </div>
-      </header>
-
+      <%= render 'layouts/header' %>
       <main>
         <%= yield %>
       </main>

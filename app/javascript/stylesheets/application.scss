@@ -10,7 +10,7 @@ body {
 
 .bg {
   background: rgba(255, 255, 255, 40%);
-  min-height: 100vh; //bodyの高さが最小でもビューポートの高さ100%
+  min-height: 100vh; //bodyの高さが最小でもビューポートの高さ100%s
 }
 
 // 区切り線（全ページ共通）
@@ -39,67 +39,15 @@ body {
   color: red;
 }
 
-// ヘッダーレイアウト
-header{
-  width: 100vw;
-  height: 70px;
-  background-color: #ffd500;
 
-  .header-logo{
-    float: left;
-    padding: 16px 20px;
-
-  }
-
-  .header-list{
-     list-style: none;
-     display: flex;
-     justify-content: flex-end;
-
-      li{
+      .welcome{
         list-style: none;
-        float: left;
-        padding: 16px 3px;
+        margin-top: 20px;
 
-      }
 
-      .header-searchform{
-        float: left;
-        padding: 18.86px 0px;
-      }
-
-      .category{
-        float: left;
-        padding: 8px 0px 0px 10px;
-      }
-
-       .header-dropdown{
-        float: left;
-        padding: 11px 20px 30px 0px;
-      }
-
-      .new_post{
-        float: left;
-        padding: 18px 0px 26px 10px;
-
-        a{
-          color: black;
-        }
-      }
-
-       p{
-        list-style: none;
-        float: left;
-        padding: 20px 100px 20px 200px;
-        color: black;
         font-weight: bold;
       }
-  }
-}
 
- .admin_header {
-  background-color: #00a1e9;
- }
 
  .account_edit{
    li{
@@ -118,9 +66,12 @@ header{
 // 投稿一覧
 .post_list{
     list-style: none;
+    display: block;
 
     .image{
       float: left;
+
+
     }
     .post{
       font-size: 80%;
@@ -270,27 +221,25 @@ header{
 
   }
 
-.comment{
+  .comment{
+   p{
+    padding-left: 10px;
+    }
 
- p{
-  padding-left: 10px;
+  .comment2{
+    list-style: none;
+    font-size: 70%;
+    margin-top: 25px;
+    padding-left: 10px;
+    color: #7E7E7E;
+    }
+
+  .comment-delete{
+    list-style: none;
+    float: right;
+    margin-top: -20px;
+    }
   }
-
-.comment2{
-  list-style: none;
-  font-size: 70%;
-  margin-top: 25px;
-  padding-left: 10px;
-  color: #7E7E7E;
-  }
-
-.comment-delete{
-  list-style: none;
-  float: right;
-  margin-top: -20px;
-  }
-
-}
 
   .btn-Light{
     color: #504946;
@@ -398,11 +347,11 @@ header{
 footer{
   margin-top: auto;
   height: 50px;
-  background-color: #ffd500;
+  background-color: #ffd500;;
 
 }
  .admin_footer {
-  background-color: #00a1e9;
+  background-color: #ffd500;;
  }
 
 // 管理者側投稿詳細
@@ -444,7 +393,6 @@ footer{
   }
 
 .comment{
-
  p{
   padding-left: 10px;
   }
@@ -477,14 +425,72 @@ footer{
   }
 }
 
-// @media screen and (max-width: 1024px){
-//   .bg {
-//     background-color: blue;
-//     }
-// }
 
-// @media screen and (max-width: 480px){
-//   .bg {
-//   background-color: green;
-//   }
-// }
+
+//タブレット
+@media screen and (max-width: 959px){
+  .post_list{
+    list-style: none;
+
+
+    .image{
+      float: center;
+
+    }
+    .post{
+      font-size: 80%;
+      font-weight: bold;
+      margin-top: -30px;
+      padding-left: 400px;
+      color: #e60033;
+    }
+    .title{
+      font-size: 150%;
+      padding-left: 100px;
+      display: flex;
+      flex-wrap:nowrap;
+    justify-content:space-between;
+
+      a{
+        text-decoration: none;
+        color: black;
+      }
+      a:hover {
+       color: #ffd500;
+      }
+    }
+    .time{
+      font-size: 80%;
+      padding-left: 100px;
+    }
+    .body{
+      font-size: 100%;
+      padding-left: 100px;
+      display: flex;
+      flex-wrap:nowrap;
+    justify-content:space-between;
+
+    }
+    .tag{
+      font-size: 90%;
+      padding-left: 100px;
+      display: flex;
+      a{
+        text-decoration: none;
+        color: turquoise;
+      }
+      a:hover {
+       color: #ea5550;
+      }
+    }
+}
+
+
+}
+
+
+//スマートフォン
+@media screen and (max-width: 519px){
+
+
+}
