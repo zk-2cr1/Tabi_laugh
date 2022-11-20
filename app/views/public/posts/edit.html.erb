@@ -1,28 +1,31 @@
 <div class="container">
   <div class="bg"></br>
 
-    <div class="row justify-content-md-center">
-      <div class="post_edit">
+    <div class="row justify-content-center">
+      <div class="post_edit col-8">
+      
         <%= form_with model: @post, url: post_path, method: :patch, local: true do |f| %>
+        <div class="form">
           <li>タイトル</li>
-          <p><%= f.text_field :title, size: 80 %></p>
+          <p><%= f.text_field :title, style: "width: 100%" %></p>
 
           <li>内容</li>
-          <p><%= f.text_area :body, size: "80x15" %></p>
+          <p><%= f.text_area :body, style: "width: 100%" %></p>
 
           <li>#ハッシュタグ</li>
-          <p><%= f.text_area :caption, size: "80x3" %></p>
+          <p><%= f.text_area :caption, style: "width: 100%" %></p>
+          </div>
 
-          <p class="row justify-content-md-center">
+          <p class="row justify-content-center">
             <%= f.file_field :image, multiple: true %>
           </p>
 
-          <p class="row justify-content-md-center">
+          <p class="row justify-content-center">
             カテゴリー：
              <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください" %>
           </p>
 
-          <p class="row justify-content-md-center">
+          <p class="row justify-content-center">
              <%= f.radio_button :status, Post.statuses.key(0) %>
              <%= f.label :status, Post.statuses_i18n[:draft] %>
 
@@ -30,13 +33,14 @@
              <%= f.label :status, Post.statuses_i18n[:publish] %>
           </p>
 
-          <div class="row justify-content-md-center">
+          <div class="row justify-content-center">
             <div class="button-space">
             <%= f.submit '変更を保存', class: "btn btn-success btn-md" %>
             <%= link_to '記事を削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-md" %>
             </div>
           </div>
         <% end %>
+        </div>
       </div>
     </div>
 

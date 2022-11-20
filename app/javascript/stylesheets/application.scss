@@ -251,6 +251,8 @@ body {
     list-style: none;
     padding-left: 295px;
     padding-bottom: 25px;
+    display: flex;
+    
 
   .btn-success{
     color: #504946;
@@ -258,6 +260,10 @@ body {
     border-color: #00ac97;
   }
  }
+}
+
+.form{
+  flex-grow: 1;
 }
 
 .button-space{
@@ -430,9 +436,11 @@ footer{
 
 
 @media screen and (max-width: 770px){
-  .post_list{
-  flex-direction: column;
+//   .post_list{
+//   flex-direction: column;
+//   }
+
+.button{
+    display: block;
   }
-  
-  
 }

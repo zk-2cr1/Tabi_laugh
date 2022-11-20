@@ -6,20 +6,20 @@
 
       <div class="account_edit">
         <div class="row justify-content-center">
-          <div class='col-6'>
+          <div class='col-8'>
             <%= form_with model: @member, url: update_information_path, method: :patch, local: true do |f| %>
               <li>ユーザー名</li>
-              <p><%= f.text_field :nick_name, size: 50 %></p>
+              <p><%= f.text_field :nick_name, style: "width: 100%" %></p>
 
               <li>紹介</li>
-              <p><%= f.text_area :introduction, size: "50x5" %></p>
+              <p><%= f.text_area :introduction, style: "width: 100%" %></p>
 
-              <div class="row justify-content-md-center">
+              <div class="row justify-content-center">
                 <%= f.file_field :profile_image %>
               </div></br>
 
               <div class="button-space">
-                <div class="row justify-content-md-center">
+                <div class="row justify-content-center">
                   <%= f.submit '変更を保存', class: "btn btn-success btn-md" %>
                 </div>
               </div>

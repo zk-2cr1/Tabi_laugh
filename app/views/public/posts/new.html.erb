@@ -2,27 +2,30 @@
   <div class="bg"></br>
 
     <%= render 'layouts/errors', obj: @post %>
-      <div class="row justify-content-md-center">
+      <div class="row justify-content-center">
+       <div class="post_edit col-8">
         <%= form_with model: @post, url: posts_path, method: :post, local: true do |f| %>
-          <p>タイトル</p>
-          <p><%= f.text_field :title, size: 80 %></p>
+        <div class="form">
+          <li>タイトル</li>
+          <p><%= f.text_field :title, style: "width: 100%" %></p>
 
-          <p>内容</p>
-          <p><%= f.text_area :body, size: "80x15" %></p>
+          <li>内容</li>
+          <p><%= f.text_area :body, style: "width: 100%" %></p>
 
-          <p>#ハッシュタグ</p>
-          <p><%= f.text_area :caption, size: "80x3" %></p>
+          <li>#ハッシュタグ</li>
+          <p><%= f.text_area :caption, style: "width: 100%" %></p>
+        </div>
 
-          <p class="row justify-content-md-center">
+          <p class="row justify-content-center">
             <%= f.file_field :image, multiple: true %>  <!--multiple:true 複数画像投稿-->
           </p>
 
-          <p class="row justify-content-md-center">
+          <p class="row justify-content-center">
              カテゴリー
              <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: "選択してください" %>
           </p>
 
-          <p class="row justify-content-md-center">
+          <p class="row justify-content-center">
            <%= f.radio_button :status, Post.statuses.key(0) %>
            <%= f.label :status, Post.statuses_i18n[:draft] %>
 
@@ -31,11 +34,12 @@
           </p>
 
           <div class="button-space">
-            <div class="row justify-content-md-center">
+            <div class="row justify-content-center">
               <%= f.submit '投稿する', class: "btn btn-success btn-md" %>
             </div>
           </div>
       <% end %>
+      </div>
     </div>
 
   </div>
