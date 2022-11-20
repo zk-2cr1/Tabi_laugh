@@ -1,15 +1,12 @@
 ja:
   activerecord:
+    models:
+      member: 'ユーザー'                 #model名
     attributes:
-      member:                 #model名
+      member:
         introduction: '紹介'  #カラム名
         name: '名前'
         nick_name: 'ユーザー名'
         email: 'メールアドレス'
         password: 'パスワード'
-      post:
-        title: 'タイトル'
-        body: '本文'
-        category: 'カテゴリー'
-      comment:
-        comment: 'コメント'
+    
