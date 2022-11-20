@@ -117,6 +117,7 @@ body {
 
   .image{
     margin-top: -25px;
+    max-width: 100％;
     a{
       text-decoration: none;
     }
@@ -427,70 +428,11 @@ footer{
 
 
 
-//タブレット
-@media screen and (max-width: 959px){
+
+@media screen and (max-width: 770px){
   .post_list{
-    list-style: none;
-
-
-    .image{
-      float: center;
-
-    }
-    .post{
-      font-size: 80%;
-      font-weight: bold;
-      margin-top: -30px;
-      padding-left: 400px;
-      color: #e60033;
-    }
-    .title{
-      font-size: 150%;
-      padding-left: 100px;
-      display: flex;
-      flex-wrap:nowrap;
-    justify-content:space-between;
-
-      a{
-        text-decoration: none;
-        color: black;
-      }
-      a:hover {
-       color: #ffd500;
-      }
-    }
-    .time{
-      font-size: 80%;
-      padding-left: 100px;
-    }
-    .body{
-      font-size: 100%;
-      padding-left: 100px;
-      display: flex;
-      flex-wrap:nowrap;
-    justify-content:space-between;
-
-    }
-    .tag{
-      font-size: 90%;
-      padding-left: 100px;
-      display: flex;
-      a{
-        text-decoration: none;
-        color: turquoise;
-      }
-      a:hover {
-       color: #ea5550;
-      }
-    }
-}
-
-
-}
-
-
-//スマートフォン
-@media screen and (max-width: 519px){
-
-
+  flex-direction: column;
+  }
+  
+  
 }
