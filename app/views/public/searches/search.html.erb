@@ -1,0 +1,28 @@
+<div class="container">
+<div class="bg">
+<div class="row justify-content-center">
+<div class='col-6'>
+<br>
+  <h3 class="section-ttl font-weight-bold">検索結果</h3>
+
+<% if @model == 'member' %>
+   <% if @members.first %>
+   <%= render 'public/members/index', post: @members %>
+   <% else %>
+   <h4>一致するユーザーはいませんでした。</h4>
+   <% end %>
+
+
+<% elsif @model == 'post' %>
+	 <% if @posts.first %>
+   <%= render 'public/posts/index', post: @posts %>
+   <%= paginate @posts %>
+   <% else %>
+   <h4>対応する投稿はありませんでした。</h4>
+  <% end %>
+
+<% end %>
+</div>
+</div>
+</div>
+</div>

@@ -43,4 +43,17 @@ def update_without_current_password(params, *options)
     result
 end
 
+# ユーザー検索機能
+def self.search_for(keyword,method)
+    if method == "perfect"
+      Member.where(["nick_name like?", "#{keyword}"])
+    elsif method == "forward"
+      Member.where(["nick_name like?", "#{keyword}%"])
+    elsif method == "backward"
+      Member.where(["nick_name like?", "%#{keyword}"])
+    else
+      Member.where(["nick_name like?", "%#{keyword}%"])
+    end
+ end
+
 end

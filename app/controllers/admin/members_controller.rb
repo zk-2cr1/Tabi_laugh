@@ -22,7 +22,6 @@ class Admin::MembersController < ApplicationController
     end
   end
 
-
     private
 
   def member_params

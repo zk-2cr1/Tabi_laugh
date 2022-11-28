@@ -12,20 +12,20 @@ Rails.application.routes.draw do
   scope module: :public do
       root to: 'homes#top'
 
-      get   'members'                  => 'members#show',        as: 'mypage'
+      get   'members/mypage'           => 'members#mypage',      as: 'mypage'
       get   'members/information/edit' => 'members#edit',        as: 'edit_information'
       get   'members/unsubscribe'      => 'members#unsubscribe', as: 'unsubscribe'
       patch 'members/withdraw'         => 'members#withdraw',    as: 'withdraw_member'
       patch 'members/information'      => 'members#update',      as: 'update_information'
       get   'post/hashtag/:name'       => 'posts#hashtag',       as: 'hashtag'
-      get   'posts/search'             => 'posts#search',        as: 'search'
+      get   '/search'                  => 'searches#search',     as: 'search'
 
       resources :posts do
         resource :favorites, only: [:create, :destroy]
         resources :comments,  only: [:create, :destroy]
       end
 
-     
+      resources :members,    only: [:index, :show]
       resources :categories, only: [:index]
     end
 

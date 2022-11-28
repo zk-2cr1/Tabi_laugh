@@ -73,10 +73,6 @@ class Public::PostsController < ApplicationController
     end
 
 
-    def search
-      @posts = Post.publish.search_for(params[:keyword], params[:method]).page(params[:page]).per(10)
-    end
-
     private
 
     def post_params

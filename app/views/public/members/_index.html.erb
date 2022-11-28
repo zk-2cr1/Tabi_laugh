@@ -1,0 +1,17 @@
+ <div class="member_list">
+          <hr class="hr1">
+           <% @members.each do |member| %>
+             <li class="image">
+             <%= link_to member_path(member.id) do %>
+              <% if member.profile_image.attached? %>
+               <%= image_tag member.profile_image, size:'80x50' %>
+              <% else %>
+               <%= image_tag "/no-image.png", size:'80x50' %>
+              <% end %>
+            <% end %>
+            </li>
+            <li class="nick_name"><%= link_to member.nick_name, member_path(member.id) %></li></br>
+          <hr class="hr1">
+          <% end %>
+         <%= paginate @members %>
+</div>

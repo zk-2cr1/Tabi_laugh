@@ -6,8 +6,8 @@
 <!-- ドロップメニューの設定 -->
 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
   <% if member_signed_in? %>
-    <%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: 'nav-link dropdown-item' %>
     <%= link_to 'アカウント編集', edit_member_registration_path, class: 'nav-link dropdown-item' %>
+    <%= link_to 'ログアウト', destroy_member_session_path, method: :delete, class: 'nav-link dropdown-item' %>
   <% else %>
     <%= link_to "新規登録", new_member_registration_path, class: 'nav-link dropdown-item' %>
     <%= link_to "ログイン", new_member_session_path, class: 'nav-link dropdown-item' %>

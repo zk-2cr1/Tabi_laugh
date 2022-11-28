@@ -76,7 +76,6 @@ body {
     .post{
       font-size: 80%;
       font-weight: bold;
-      margin-top: -30px;
       padding-left: 400px;
       color: #e60033;
     }
@@ -111,6 +110,46 @@ body {
       }
     }
 }
+
+
+// ユーザー一覧
+.member_list{
+    list-style: none;
+    display: block;
+
+    .image{
+      float: left;
+    }
+
+    .nick_name{
+      font-size: 100%;
+      padding-left: 100px;
+      a{
+        text-decoration: none;
+        color: black;
+      }
+      a:hover {
+       color: #ffd500;
+      }
+    }
+}
+
+// ユーザー詳細
+.user{
+  .image{
+      float: left;
+    }
+
+  .nick_name{
+   font-size: 150%;
+   font-weight: bold;
+   padding-left: 130px;
+  }
+  .introduction{
+    padding-left: 130px;
+  }
+}
+
 
 // ブックマーク
 .card{
@@ -252,7 +291,7 @@ body {
     padding-left: 295px;
     padding-bottom: 25px;
     display: flex;
-    
+
 
   .btn-success{
     color: #504946;

@@ -1,0 +1,73 @@
+<!--マイページ-->
+  <div class='row justify-content-start'>
+    <div class='col-md-3 offset-sm-1'>
+      <br>
+        <% if @member.profile_image.attached? %>
+          <%= image_tag @member.profile_image, style:"border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
+        <% else %>
+          <%= image_tag "/no-image.png", style:"border-radius: 50%; width: 100px; height: 100px; object-fit:cover;" %>
+        <% end %>
+
+        <div class="row justify-content-end">
+         <%= link_to edit_information_path, class: "btn btn-outline-secondary btn-md" do %>
+          <i class="fas fa-user-cog"></i>
+        <% end %>
+        </div>
+
+      	  <h5 class="section-ttl font-weight-bold"><%= @member.nick_name %></h5>
+      	  <p><%= @member.introduction %></p>
+
+      <br>
+      <br>
+
+      <h4 class="section-ttl font-weight-bold">投稿記事</h4>
+       <%= render 'public/posts/index', post: @post %>
+    </div>
+
+     <div class='col-md-6 offset-sm-1'>
+       <br>
+     <h4 class="section-ttl font-weight-bold">ブックマークした記事</h4>
+     <div class="row row-cols-1 row-cols-md-3">
+       <!--カード表示-->
+
+      <% @favorite.each do |favorite| %>
+        <div class="card" style="width: 20rem;">
+          <p class="image">
+     　　       <%= link_to post_path(favorite.post) do %>
+                  <% if favorite.post.image.attached? %>
+                 　  <% favorite.post.image.each do |image| %>
+                    <%= image_tag image, class:"card-img-top", size:'200x200' %>
+                    <% end %>
+                  <% else %>
+                    <%= image_tag "/no-image.png", class:"card-img-top", size:'200x200' %>
+                  <% end %>
+              <% end %>
+          </p>
+
+            <p class="card-title">
+              <%= link_to post_path(favorite.post), class:"text-dark" do %>
+              <%= favorite.post.title %>
+              <% end %>
+            </p>
+            <p class="card-time"><%= favorite.post.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+            <p class="card-text"><%= favorite.post.body.truncate(30) %></p>
+            <p class="card-tag"><%= render_with_hashtags(favorite.post.caption) %></p>
+            <p class="card-text2">
+
+              <% if favorite.member.profile_image.attached? %>
+                <%= image_tag favorite.member.profile_image, class: "rounded-circle", size:'30x30' %>
+              <% else %>
+                <%= image_tag "/no-image.png", class: "rounded-circle", size:'30x30' %>
+              <% end %>
+
+             By <%= favorite.post.member.nick_name %> ｜
+            <i class="fas fa-heart" style="color: red;"></i><%= favorite.post.favorites.count %>
+            <i class="fa-regular fa-comment-dots" style="color: #696969;"></i><%= favorite.post.comments.count %>
+            </p>
+        </div>
+      <% end %>
+
+      <%= paginate @favorite %>
+      </div>
+    </div>
+</div>

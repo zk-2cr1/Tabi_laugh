@@ -1,12 +1,22 @@
 class Public::MembersController < ApplicationController
-   before_action :authenticate_member!
-   before_action :set_current_member
+   before_action :authenticate_member!, except: [:index, :show]
+   before_action :set_current_member, except: [:index, :show]
 
-  def show
+  def mypage
       @favorites = Favorite.all
       @favorite = Favorite.where(member_id: current_member.id).page(params[:page]).order(created_at: "DESC").per(9)
       @post = Post.where(member_id: current_member.id).includes(:member).order("created_at DESC").page(params[:page]).per(5)
       @comments = Comment.all
+  end
+
+  def show
+      @member = Member.find(params[:id])
+      @posts = @member.posts.page(params[:page]).per(10)
+      @comments = Comment.all
+  end
+
+  def index
+      @members = Member.all.page(params[:page]).per(10)
   end
 
   def update
