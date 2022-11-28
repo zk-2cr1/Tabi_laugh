@@ -45,7 +45,7 @@
           </p>
 
             <p class="card-title">
-              <%= link_to post_path(favorite.post), class:"text-dark" do %>
+              <%= link_to post_path(favorite.post) do %>
               <%= favorite.post.title %>
               <% end %>
             </p>
@@ -60,7 +60,7 @@
                 <%= image_tag "/no-image.png", class: "rounded-circle", size:'30x30' %>
               <% end %>
 
-             By <%= favorite.post.member.nick_name %> ｜
+             By <%= link_to favorite.post.member.nick_name, member_path(favorite.post.member.id) %> ｜
             <i class="fas fa-heart" style="color: red;"></i><%= favorite.post.favorites.count %>
             <i class="fa-regular fa-comment-dots" style="color: #696969;"></i><%= favorite.post.comments.count %>
             </p>

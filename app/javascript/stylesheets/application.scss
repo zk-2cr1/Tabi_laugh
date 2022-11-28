@@ -195,6 +195,13 @@ body {
     font-size: 80%;
     padding-left: 20px;
     margin-top: -8px;
+    a{
+        text-decoration: none;
+        color: black;
+      }
+      a:hover {
+       color: #ffd500;
+      }
   }
   .card-tag{
       font-size: 90%;
