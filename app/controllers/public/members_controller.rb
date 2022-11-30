@@ -11,7 +11,7 @@ class Public::MembersController < ApplicationController
 
   def show
       @member = Member.find(params[:id])
-      @posts = @member.posts.page(params[:page]).per(10)
+      @posts = @member.posts.publish.page(params[:page]).per(10)
       @comments = Comment.all
   end
 
